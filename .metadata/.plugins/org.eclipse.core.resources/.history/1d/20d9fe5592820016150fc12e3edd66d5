@@ -1,0 +1,18 @@
+## makefile for Roman Numeral Calculator Kata
+## Brad Rust
+## 9/24/2016
+
+CC=cc
+CXX=CC
+CCFLAGS= -g -std=c99 -Wall -Werror
+
+all: test1
+
+%.o : %.c
+	$(CC) -c $(CCFLAGS) $<
+	
+test1: is_I_X_C.o
+	$(CC) -o is_I_X_C is_I_X_C.o
+	
+clean:
+	rm -f -core *.o is_I_X_C

@@ -1,0 +1,10 @@
+#include "CheckSyntax.h"
+
+#test test_IsRomanNumeral_I_X_C
+	fail_unless(is_I_X_C('I') == 1, "Fails - expected true result for I");
+	fail_unless(is_I_X_C('X') == 1, "Fails - expected true result for X");
+	fail_unless(is_I_X_C('C') == 1, "Fails - expected true result for I");
+	fail_unless(is_I_X_C('D') == 0, "Fails - expected false result for D");
+	fail_unless(is_I_X_C('i') == 0, "Fails - expected false result for i");
+	fail_unless(is_I_X_C('x') == 0, "Fails - expected false result for x");
+	fail_unless(is_I_X_C('%') == 0, "Fails - expected false result for %");

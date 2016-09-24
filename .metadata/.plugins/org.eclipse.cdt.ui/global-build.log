@@ -1,0 +1,21 @@
+15:21:05 **** Build of configuration Debug for project Roman Numeral Calc ****
+make all 
+Building file: ../CheckSyntax.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"CheckSyntax.d" -MT"CheckSyntax.o" -o "CheckSyntax.o" "../CheckSyntax.c"
+Finished building: ../CheckSyntax.c
+ 
+Building target: libRoman Numeral Calc.so
+Invoking: GCC C Linker
+gcc -shared -o "libRoman Numeral Calc.so"  ./CheckSyntax.o   
+Finished building target: libRoman Numeral Calc.so
+ 
+15:21:29 **** Incremental Build of configuration Debug for project Roman Numeral Calc ****
+make all 
+make: Nothing to be done for `all'.
+15:57:17 **** Incremental Build of configuration Debug for project Roman Numeral Calc ****
+make all 
+make: Nothing to be done for `all'.
+16:03:24 **** Incremental Build of configuration Debug for project Roman Numeral Calc ****
+make all 
+make: Nothing to be done for `all'.

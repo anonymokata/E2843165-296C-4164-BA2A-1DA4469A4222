@@ -1,0 +1,27 @@
+## makefile for Roman Numeral Calculator Kata
+## Brad Rust
+## 9/24/2016
+
+#create our compiler and flags variables
+CC=gcc
+CFLAGS= -g -std=c99 -Wall -Werror
+LIBS=-lcheck
+
+all: testSyntax
+
+%.o : %.c
+	$(CC) -c $(CFLAGS) $<
+
+testSyntax: is_I_X_C.o is_I_X_C-test.o
+	$(CC) is_I_X_C.o is_I_X_C-test.o runSyntaxTests
+
+#compile the 'isTheRomanNumeral I, X, Or C' function, create object
+is_I_X_C.o: CheckSyntax.c CheckSyntax.h
+	$(CC) is_I_X_C.o
+	
+#do the same for the test that we created with checkmk
+is_I_X_C-test.o: is_I_X_C-test.c is_I_X_C.h 
+	$(CC) is_I_X_C-test.c
+	
+clean:
+	rm -f -core *.o runSyntaxTests
