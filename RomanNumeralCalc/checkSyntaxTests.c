@@ -58,6 +58,8 @@ START_TEST(maxLengthExceededTest)
 	fail_unless(maxLengthExceeded("This_String_Will_Fail") == 1, "maxLengthExceeded - output false for long string");
 	fail_unless(maxLengthExceeded("StringWill_Pass") == 0, "maxLengthExceeded - output true for MMXVD");
 	
+
+
 	
 }
 END_TEST

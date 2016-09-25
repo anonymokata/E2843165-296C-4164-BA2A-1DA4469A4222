@@ -1,0 +1,4 @@
+#include "convert.h"
+
+#test convertFromRomanNumeralToBaseTenTest
+	fail_unless(convertFromRomanNumeralToBaseTen("I") == 1,"Failed to convert I to 1");
