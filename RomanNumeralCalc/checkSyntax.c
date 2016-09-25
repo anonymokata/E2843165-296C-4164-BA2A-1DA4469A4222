@@ -27,6 +27,23 @@ _Bool is_I_X_C(char c)
 	}
 }
 
+_Bool is_V_L_D_M(char c)
+{
+	switch (c)
+	{
+	case 'V' :
+		return 1;
+	case 'L':
+		return 1;
+	case 'D' :
+		return 1;
+	case 'M' :
+		return 1;
+	default :
+		return 0;
+	}
+}
+
 
 
 

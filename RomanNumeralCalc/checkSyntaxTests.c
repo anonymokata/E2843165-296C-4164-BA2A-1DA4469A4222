@@ -11,7 +11,7 @@
 START_TEST(is_I_X_C_test)
 {
 #line 4
-	fail_unless(is_I_X_C('I') == 0, "is_I_X_C failed - output false for good input");
+	fail_unless(is_I_X_C('I') == 1, "is_I_X_C failed - output false for good input");
 	fail_unless(is_I_X_C('X') == 1, "is_I_X_C failed - output false for good input");
 	fail_unless(is_I_X_C('C') == 1, "is_I_X_C failed - output false for good input");
 	fail_unless(is_I_X_C('i') == 0, "is_I_X_C failed - output true for bad input");
@@ -23,7 +23,13 @@ END_TEST
 START_TEST(is_V_L_D_M_test)
 {
 #line 11
-	fail_unless(is_V_L_D_M('V') == 1, "is_V_L_D_M failed - output false for good input");	
+	fail_unless(is_V_L_D_M('V') == 1, "is_V_L_D_M failed - output false for good input");
+	fail_unless(is_V_L_D_M('L') == 1, "is_V_L_D_M failed - output false for good input");
+	fail_unless(is_V_L_D_M('D') == 1, "is_V_L_D_M failed - output false for good input");
+	fail_unless(is_V_L_D_M('M') == 1, "is_V_L_D_M failed - output false for good input");
+	fail_unless(is_V_L_D_M('v') == 1, "is_V_L_D_M failed - output true for bad input");
+	fail_unless(is_V_L_D_M('l') == 1, "is_V_L_D_M failed - output true for bad input");
+	fail_unless(is_V_L_D_M('_') == 1, "is_V_L_D_M failed - output true for bad input");
 }
 END_TEST
 
