@@ -30,6 +30,14 @@ START_TEST(is_V_L_D_M_test)
 	fail_unless(is_V_L_D_M('v') == 1, "is_V_L_D_M failed - output true for bad input");
 	fail_unless(is_V_L_D_M('l') == 1, "is_V_L_D_M failed - output true for bad input");
 	fail_unless(is_V_L_D_M('_') == 1, "is_V_L_D_M failed - output true for bad input");
+
+}
+END_TEST
+
+START_TEST(maxLetterCountTest)
+{
+#line 20
+	fail_unless(maxLetterCount('I') == 3, "maxLetterCountFailes - output something other than 3 for I");
 }
 END_TEST
 
@@ -43,6 +51,7 @@ int main(void)
     suite_add_tcase(s1, tc1_1);
     tcase_add_test(tc1_1, is_I_X_C_test);
     tcase_add_test(tc1_1, is_V_L_D_M_test);
+    tcase_add_test(tc1_1, maxLetterCountTest);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);
