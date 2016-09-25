@@ -36,16 +36,32 @@ int pairValue(char firstNumeral, char secondNumeral)
 
 _Bool legalPair(char first, char second)
 {
-	if (first == 'I')
-		if ((second == 'V') || (second == 'X'))
-			return 1;
-	if (first == 'X')
-		if ((second == 'L') || (second == 'C'))
-			return 1;
-	if (first == 'C')
-			if ((second == 'D') || (second == 'M'))
+	switch (first)
+	{
+		case 'I' :
+			if ((second == 'V') || (second == 'X') || (second == 'I'))
 				return 1;
-		return 0;
+		case 'V' :
+			if (second == 'I')
+				return 1;
+		case 'X' :
+			if (second == 'D' || second == 'M')
+				return 0;
+			return 1;
+		case 'L' :
+			if (second == 'I' || second == 'V' || second == 'X')
+				return 1;
+		case 'C' :
+			return 1;
+		case 'D' :
+			if (second == 'D' || second == 'M')
+				return 0;
+			return 1;
+		case 'M' :
+			return 1;
+		default :
+			return 0;
+	}
 }
 
 int singleNumeralValue(char numeral)

@@ -48,6 +48,7 @@ START_TEST(legalPairTest)
 	fail_unless(legalPair('X', 'C') == 1,"Failed to return true for legal pair XC");
 	fail_unless(legalPair('C', 'D') == 1,"Failed to return true for legal pair CD");
 	fail_unless(legalPair('C', 'M') == 1,"Failed to return true for legal pair CM");
+	fail_unless(legalPair('M', 'M') == 1,"Failed to return true for legal pair MM");
 	fail_unless(legalPair('I', 'M') == 0,"Failed to return false for illegal pair CM");
 	fail_unless(legalPair('X', 'M') == 0,"Failed to return false for illegal pair CM");
 	
