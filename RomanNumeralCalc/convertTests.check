@@ -8,3 +8,10 @@
 	fail_unless(convertFromRomanNumeralToBaseTen("C") == 100,"Failed to convert C to 100");
 	fail_unless(convertFromRomanNumeralToBaseTen("D") == 500,"Failed to convert D to 500");
 	fail_unless(convertFromRomanNumeralToBaseTen("M") == 1000,"Failed to convert M to 1000");
+	
+#test lookAheadTest
+	int *index1 = 0;
+	fail_unless(lookAhead(&index1, "M") == 1000,"Failed to return value of M");
+
+#test pairValueTest
+	fail_unless(pairValue('I', 'V') == 4,"Failed to return value of M");

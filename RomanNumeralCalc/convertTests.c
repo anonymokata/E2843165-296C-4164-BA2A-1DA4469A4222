@@ -18,6 +18,23 @@ START_TEST(convertFromRomanNumeralToBaseTenTest)
 	fail_unless(convertFromRomanNumeralToBaseTen("C") == 100,"Failed to convert C to 100");
 	fail_unless(convertFromRomanNumeralToBaseTen("D") == 500,"Failed to convert D to 500");
 	fail_unless(convertFromRomanNumeralToBaseTen("M") == 1000,"Failed to convert M to 1000");
+	
+}
+END_TEST
+
+START_TEST(lookAheadTest)
+{
+#line 13
+	int *index1 = 0;
+	fail_unless(lookAhead(&index1, "M") == 1000,"Failed to return value of M");
+
+}
+END_TEST
+
+START_TEST(pairValueTest)
+{
+#line 17
+	fail_unless(pairValue('I', 'V') == 4,"Failed to return value of M");
 }
 END_TEST
 
@@ -30,6 +47,8 @@ int main(void)
 
     suite_add_tcase(s1, tc1_1);
     tcase_add_test(tc1_1, convertFromRomanNumeralToBaseTenTest);
+    tcase_add_test(tc1_1, lookAheadTest);
+    tcase_add_test(tc1_1, pairValueTest);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);

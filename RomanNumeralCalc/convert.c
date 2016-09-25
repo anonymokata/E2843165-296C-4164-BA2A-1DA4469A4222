@@ -5,6 +5,7 @@
  *      Author: brad
  */
 #include "stdlib.h"
+#include "string.h"
 #include "checkSyntax.h"
 #include "convert.h"
 
@@ -18,6 +19,28 @@ int convertFromRomanNumeralToBaseTen(char* numeralString)
 	return total;
 }
 
+int lookAhead(int *indexer, char* numeralString)
+{
+	if (strlen(numeralString) ==(*indexer + 1))//is this the last character?
+		return singleNumeralValue(numeralString[*indexer]);
+	int value = pairValue(numeralString[*indexer], numeralString[*indexer + 1]);
+	return value;
+}
+
+int pairValue(char firstNumeral, char secondNumeral)
+{
+	//if (!legalPair())
+		return 4;
+
+}
+/*
+_Bool legalPair(char first, char second)
+{
+	if (first == 'I')
+		return 1;
+	return 0;
+}
+*/
 int singleNumeralValue(char numeral)
 {
 	switch (numeral)

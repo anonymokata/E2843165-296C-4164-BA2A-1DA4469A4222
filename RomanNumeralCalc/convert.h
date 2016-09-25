@@ -10,5 +10,6 @@
 
 int convertFromRomanNumeralToBaseTen(char* numeralString);
 int singleNumeralValue(char numeral);
+int pairValue(char firstNumeral, char secondNumeral);
 
 #endif /* CONVERT_H_ */
