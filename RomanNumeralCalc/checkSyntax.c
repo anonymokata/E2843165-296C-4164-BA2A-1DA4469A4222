@@ -10,7 +10,7 @@
  *  maximum roman numeral is 3999
  *  ie, strings are always fairly short
  */
-#include "CheckSyntax.h"
+#include "checkSyntax.h"
 
 _Bool is_I_X_C(char c)
 {
@@ -26,7 +26,6 @@ _Bool is_I_X_C(char c)
 		return 0;
 	}
 }
-
 
 
 

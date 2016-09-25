@@ -4,15 +4,19 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../CheckSyntax.c \
+../checkSyntax.c \
 ../is_I_X_C-test.c 
 
+O_SRCS += \
+../checkSyntax.o \
+../is_I_X_C-test.o 
+
 OBJS += \
-./CheckSyntax.o \
+./checkSyntax.o \
 ./is_I_X_C-test.o 
 
 C_DEPS += \
-./CheckSyntax.d \
+./checkSyntax.d \
 ./is_I_X_C-test.d 
 
 

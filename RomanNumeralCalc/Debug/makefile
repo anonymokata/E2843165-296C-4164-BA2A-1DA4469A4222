@@ -22,19 +22,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: libRoman\ Numeral\ Calc.so
+all: libRomanNumeralCalc.so
 
 # Tool invocations
-libRoman\ Numeral\ Calc.so: $(OBJS) $(USER_OBJS)
+libRomanNumeralCalc.so: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C Linker'
-	gcc -shared -o "libRoman Numeral Calc.so" $(OBJS) $(USER_OBJS) $(LIBS)
+	gcc -shared -o "libRomanNumeralCalc.so" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(LIBRARIES)$(OBJS)$(C_DEPS) "libRoman Numeral Calc.so"
+	-$(RM) $(LIBRARIES)$(OBJS)$(C_DEPS) libRomanNumeralCalc.so
 	-@echo ' '
 
 .PHONY: all clean dependents

@@ -1,4 +1,4 @@
-#include "CheckSyntax.h"
+#include "checkSyntax.h"
 
 #test is_I_X_C_test
 	fail_unless(is_I_X_C('I') == 1, "is_I_X_C failed - output false for good input");
@@ -6,3 +6,6 @@
 	fail_unless(is_I_X_C('C') == 1, "is_I_X_C failed - output false for good input");
 	fail_unless(is_I_X_C('i') == 0, "is_I_X_C failed - output true for bad input");
 	fail_unless(is_I_X_C('M') == 0, "is_I_X_C failed - output true for bad input");
+
+#test is_V_L_D_M_test
+	fail_unless(is_V_L_D_M('V') == 1, "is_V_L_D_M failed - output false for good input");	

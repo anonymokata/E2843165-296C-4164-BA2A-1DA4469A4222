@@ -8,21 +8,28 @@ CFLAGS= -g -std=c99 -Wall -Werror
 #supposedly lcheck is enough, but I needed the other three to squelch the litanny of errors regarding timers and the like
 LIBS=-lcheck -pthread -lm -lrt
 
-all: testSyntax
+all: testSyntax compileTests.c runTests
 
 %.o : %.c
 	$(CC) $(CFLAGS) $<
 
-testSyntax: CheckSyntax.o is_I_X_C-test.o
-	$(CC) CheckSyntax.o is_I_X_C-test.o -o runSyntaxTests $(LIBS)
+testSyntax: checkSyntax.o checkSyntaxTests.o
+	$(CC) checkSyntax.o checkSyntaxTests.o -o runSyntaxTests $(LIBS)
 
-#compile the CheckSyntax function, create object
-CheckSyntax.o: CheckSyntax.c CheckSyntax.h
-	$(CC) -c CheckSyntax.c
-	
+checkSyntax.o: checkSyntax.c checkSyntax.h
+	$(CC) -c checkSyntax.c
+
 #create the object for the 'IsTheCharacter_an_I_X_or_C' test
-is_I_X_C-test.o: is_I_X_C-test.c CheckSyntax.h 
-	$(CC) -c is_I_X_C-test.c
+checkSyntaxTests.o: checkSyntaxTests.c checkSyntax.h 
+	$(CC) -c checkSyntaxTests.c
+
+#might as well put this in the make file. we will be changing the tests a lot
+compileTests.c: checkSyntaxTests.check
+	checkmk  checkSyntaxTests.check >checkSyntaxTests.c
+
+#go ahead and run the test while we are at it	
+runTests: runSyntaxTests
+	./runSyntaxTests
 	
 clean:
 	rm -f -core *.o runSyntaxTests
