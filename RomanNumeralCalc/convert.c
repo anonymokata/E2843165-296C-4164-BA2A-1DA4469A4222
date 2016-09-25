@@ -33,14 +33,21 @@ int pairValue(char firstNumeral, char secondNumeral)
 		return 4;
 
 }
-/*
+
 _Bool legalPair(char first, char second)
 {
 	if (first == 'I')
-		return 1;
-	return 0;
+		if ((second == 'V') || (second == 'X'))
+			return 1;
+	if (first == 'X')
+		if ((second == 'L') || (second == 'C'))
+			return 1;
+	if (first == 'C')
+			if ((second == 'D') || (second == 'M'))
+				return 1;
+		return 0;
 }
-*/
+
 int singleNumeralValue(char numeral)
 {
 	switch (numeral)

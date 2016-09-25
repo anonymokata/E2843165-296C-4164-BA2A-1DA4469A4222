@@ -35,6 +35,22 @@ START_TEST(pairValueTest)
 {
 #line 17
 	fail_unless(pairValue('I', 'V') == 4,"Failed to return value of M");
+	
+}
+END_TEST
+
+START_TEST(legalPairTest)
+{
+#line 20
+	fail_unless(legalPair('I', 'V') == 1,"Failed to return true for legal pair IV");
+	fail_unless(legalPair('I', 'X') == 1,"Failed to return true for legal pair IX");
+	fail_unless(legalPair('X', 'L') == 1,"Failed to return true for legal pair XL");
+	fail_unless(legalPair('X', 'C') == 1,"Failed to return true for legal pair XC");
+	fail_unless(legalPair('C', 'D') == 1,"Failed to return true for legal pair CD");
+	fail_unless(legalPair('C', 'M') == 1,"Failed to return true for legal pair CM");
+	fail_unless(legalPair('I', 'M') == 0,"Failed to return false for illegal pair CM");
+	fail_unless(legalPair('X', 'M') == 0,"Failed to return false for illegal pair CM");
+	
 }
 END_TEST
 
@@ -49,6 +65,7 @@ int main(void)
     tcase_add_test(tc1_1, convertFromRomanNumeralToBaseTenTest);
     tcase_add_test(tc1_1, lookAheadTest);
     tcase_add_test(tc1_1, pairValueTest);
+    tcase_add_test(tc1_1, legalPairTest);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);
