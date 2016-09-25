@@ -45,6 +45,19 @@ START_TEST(maxLetterCountTest)
 	fail_unless(maxLetterCount('L') == 1, "maxLetterCountFailes - output something other than 1 for L");
 	fail_unless(maxLetterCount('D') == 1, "maxLetterCountFailes - output something other than 1 for D");
 	
+}
+END_TEST
+
+START_TEST(maxLengthExceededTest)
+{
+#line 29
+	fail_unless(maxLengthExceeded("MMXVD") == 0, "maxLengthExceeded - output true for MMXVD");
+	fail_unless(maxLengthExceeded("M") == 0, "maxLengthExceeded - output true for MMXVD");
+	fail_unless(maxLengthExceeded("MMMXIV") == 0, "maxLengthExceeded - output true for MMXVD");
+	fail_unless(maxLengthExceeded("") == 0, "maxLengthExceeded - output true for MMXVD");
+	fail_unless(maxLengthExceeded("This_String_Will_Fail") == 1, "maxLengthExceeded - output false for long string");
+	fail_unless(maxLengthExceeded("StringWill_Pass") == 0, "maxLengthExceeded - output true for MMXVD");
+	
 	
 }
 END_TEST
@@ -60,6 +73,7 @@ int main(void)
     tcase_add_test(tc1_1, is_I_X_C_test);
     tcase_add_test(tc1_1, is_V_L_D_M_test);
     tcase_add_test(tc1_1, maxLetterCountTest);
+    tcase_add_test(tc1_1, maxLengthExceededTest);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);

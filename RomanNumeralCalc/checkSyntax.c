@@ -67,6 +67,12 @@ int maxLetterCount(char numeral)
 	}
 }
 
-
+_Bool maxLengthExceeded(char* numeralString)
+{
+	//longest string for numbers < 3999 = 15
+	//the maximum possible length is 15 + 1 for null terminator
+	int maxLength = 16;
+	return strlen(numeralString) >= maxLength ? 1 : 0;
+}
 
 
