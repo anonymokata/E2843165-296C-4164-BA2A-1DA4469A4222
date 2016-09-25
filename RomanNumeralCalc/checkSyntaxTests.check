@@ -15,3 +15,5 @@
 	fail_unless(is_V_L_D_M('v') == 1, "is_V_L_D_M failed - output true for bad input");
 	fail_unless(is_V_L_D_M('l') == 1, "is_V_L_D_M failed - output true for bad input");
 	fail_unless(is_V_L_D_M('_') == 1, "is_V_L_D_M failed - output true for bad input");
+
+#test 

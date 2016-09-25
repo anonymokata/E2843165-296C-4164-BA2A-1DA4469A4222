@@ -32,4 +32,4 @@ runTests: runSyntaxTests
 	./runSyntaxTests
 	
 clean:
-	rm -f -core *.o runSyntaxTests
+	-rm -f *.o runSyntaxTests
