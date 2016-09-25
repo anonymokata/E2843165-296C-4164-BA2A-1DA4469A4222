@@ -29,8 +29,9 @@ int lookAhead(int *indexer, char* numeralString)
 
 int pairValue(char firstNumeral, char secondNumeral)
 {
-	//if (!legalPair())
-		return 4;
+	if (!legalPair(firstNumeral, secondNumeral))
+		return -1;
+	return 4;
 
 }
 
