@@ -38,6 +38,14 @@ START_TEST(maxLetterCountTest)
 {
 #line 20
 	fail_unless(maxLetterCount('I') == 3, "maxLetterCountFailes - output something other than 3 for I");
+	fail_unless(maxLetterCount('X') == 3, "maxLetterCountFailes - output something other than 3 for X");
+	fail_unless(maxLetterCount('C') == 3, "maxLetterCountFailes - output something other than 3 for C");
+	fail_unless(maxLetterCount('M') == 3, "maxLetterCountFailes - output something other than 3 for M");
+	fail_unless(maxLetterCount('V') == 1, "maxLetterCountFailes - output something other than 1 for V");
+	fail_unless(maxLetterCount('L') == 1, "maxLetterCountFailes - output something other than 1 for L");
+	fail_unless(maxLetterCount('D') == 1, "maxLetterCountFailes - output something other than 1 for D");
+	
+	
 }
 END_TEST
 

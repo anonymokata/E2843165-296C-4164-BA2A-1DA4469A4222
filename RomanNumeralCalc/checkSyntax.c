@@ -59,6 +59,8 @@ int maxLetterCount(char numeral)
 		case 'C' :
 			return 3;
 		case 'D' :
+			return 1;
+		case 'M' :
 			return 3;
 		default :
 			return 0;
