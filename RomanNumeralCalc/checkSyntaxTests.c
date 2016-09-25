@@ -27,9 +27,9 @@ START_TEST(is_V_L_D_M_test)
 	fail_unless(is_V_L_D_M('L') == 1, "is_V_L_D_M failed - output false for good input");
 	fail_unless(is_V_L_D_M('D') == 1, "is_V_L_D_M failed - output false for good input");
 	fail_unless(is_V_L_D_M('M') == 1, "is_V_L_D_M failed - output false for good input");
-	fail_unless(is_V_L_D_M('v') == 1, "is_V_L_D_M failed - output true for bad input");
-	fail_unless(is_V_L_D_M('l') == 1, "is_V_L_D_M failed - output true for bad input");
-	fail_unless(is_V_L_D_M('_') == 1, "is_V_L_D_M failed - output true for bad input");
+	fail_unless(is_V_L_D_M('v') == 0, "is_V_L_D_M failed - output true for bad input");
+	fail_unless(is_V_L_D_M('l') == 0, "is_V_L_D_M failed - output true for bad input");
+	fail_unless(is_V_L_D_M('_') == 0, "is_V_L_D_M failed - output true for bad input");
 
 }
 END_TEST

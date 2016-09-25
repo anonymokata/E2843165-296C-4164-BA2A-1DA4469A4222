@@ -44,6 +44,26 @@ _Bool is_V_L_D_M(char c)
 	}
 }
 
+int maxLetterCount(char numeral)
+{
+	switch (numeral)
+	{
+		case 'I' :
+			return 3;
+		case 'V' :
+			return 1;
+		case 'X' :
+			return 3;
+		case 'L' :
+			return 1;
+		case 'C' :
+			return 3;
+		case 'D' :
+			return 3;
+		default :
+			return 0;
+	}
+}
 
 
 
