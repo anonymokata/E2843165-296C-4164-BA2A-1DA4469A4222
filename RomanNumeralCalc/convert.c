@@ -4,6 +4,7 @@
  *  Created on: Sep 25, 2016
  *      Author: brad
  */
+#include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
 #include "checkSyntax.h"
@@ -11,8 +12,8 @@
 
 int convertFromRomanNumeralToBaseTen(char* numeralString)
 {
-	int total = 0;
-	for (int i = 0; i < strlen(numeralString); i++)
+	int total = 0, bound = strlen(numeralString);
+	for (int i = 0; i < bound; i++)
 	{
 		total += singleNumeralValue(numeralString[i]);
 	}
@@ -21,9 +22,11 @@ int convertFromRomanNumeralToBaseTen(char* numeralString)
 
 int lookAhead(int *indexer, char* numeralString)
 {
-	if (strlen(numeralString) ==(*indexer + 1))//is this the last character?
+	if (!(numeralString[*indexer + 1]))//is this the last character?
 		return singleNumeralValue(numeralString[*indexer]);
+	printf("the value of indexer + 1 is %d.\n", *indexer + 1);
 	int value = pairValue(numeralString[*indexer], numeralString[*indexer + 1]);
+	*indexer++;
 	return value;
 }
 
@@ -31,8 +34,10 @@ int pairValue(char firstNumeral, char secondNumeral)
 {
 	if (!legalPair(firstNumeral, secondNumeral))
 		return -1;
-	return 4;
-
+	int firstNumeralValue = singleNumeralValue(firstNumeral);
+	int secondNumeralValue = singleNumeralValue(secondNumeral);
+	//if first is less, return 2nd - 1st : else return their sum
+	return firstNumeralValue < secondNumeralValue ? (secondNumeralValue - firstNumeralValue) : (firstNumeralValue + secondNumeralValue);
 }
 
 _Bool legalPair(char first, char second)

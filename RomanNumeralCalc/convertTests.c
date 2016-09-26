@@ -19,38 +19,64 @@ START_TEST(convertFromRomanNumeralToBaseTenTest)
 	fail_unless(convertFromRomanNumeralToBaseTen("D") == 500,"Failed to convert D to 500");
 	fail_unless(convertFromRomanNumeralToBaseTen("M") == 1000,"Failed to convert M to 1000");
 	
+	//broke here to creat method stubs.....will come back once  this method can differentiate
+	//between good and bad input as it converts. no sense in traversing the string twice
+	
+	
+//first stub, but it was just that. I knew that I couldn't continue with this one. 
 }
 END_TEST
 
 START_TEST(lookAheadTest)
 {
-#line 13
-	int *index1 = 0;
-	fail_unless(lookAhead(&index1, "M") == 1000,"Failed to return value of M");
+#line 18
+	//test 1
+	int index = 0;
+	fail_unless(lookAhead(&index, "M") == 1000,"Failed to return value of M");
+	fail_unless(index == 0,"Failed to return proper index for test 1");
+	//test 2
+	fail_unless(lookAhead(&index, "MC") == 1100,"Failed to return value of M");
+	fail_unless(index == 1,"Failed to return proper index for test 2");
 
+//ah...what have we here? warmer, but not quite. 
 }
 END_TEST
 
 START_TEST(pairValueTest)
 {
-#line 17
-	fail_unless(pairValue('I', 'V') == 4,"Failed to return value of M");
+#line 28
+	fail_unless(pairValue('I', 'V') == 4,"Failed to return 4 for IV");
+	fail_unless(pairValue('I', 'I') == 2,"Failed to return 2 for II");
+	fail_unless(pairValue('V', 'I') == 6,"Failed to return 6 for VI");
+	fail_unless(pairValue('M', 'M') == 2000,"Failed to return 2000 for MM");
+	fail_unless(pairValue('C', 'M') == 900,"Failed to return 900 for CM");
+	fail_unless(pairValue('M', 'C') == 1100,"Failed to return 1100 for MC");
+	fail_unless(pairValue('I', 'M') == -1, "Failed to return -1 (BAD VAL) for IM");
+	fail_unless(pairValue('X', 'X') == 20,"Failed to return 20 for XX");
 	
+	
+//this is the base case. Is the pair legal or not? now build back toward the convert method
 }
 END_TEST
 
 START_TEST(legalPairTest)
 {
-#line 20
+#line 40
+	fail_unless(legalPair('I', 'I') == 1,"Failed to return true for legal pair II");
 	fail_unless(legalPair('I', 'V') == 1,"Failed to return true for legal pair IV");
 	fail_unless(legalPair('I', 'X') == 1,"Failed to return true for legal pair IX");
+	fail_unless(legalPair('V', 'I') == 1,"Failed to return true for legal pair VI");
+	fail_unless(legalPair('X', 'I') == 1,"Failed to return true for legal pair XI");
+	fail_unless(legalPair('X', 'X') == 1,"Failed to return true for legal pair XX");
+	fail_unless(legalPair('X', 'V') == 1,"Failed to return true for legal pair XV");
 	fail_unless(legalPair('X', 'L') == 1,"Failed to return true for legal pair XL");
-	fail_unless(legalPair('X', 'C') == 1,"Failed to return true for legal pair XC");
+	fail_unless(legalPair('L', 'X') == 1,"Failed to return true for legal pair LX");
 	fail_unless(legalPair('C', 'D') == 1,"Failed to return true for legal pair CD");
 	fail_unless(legalPair('C', 'M') == 1,"Failed to return true for legal pair CM");
 	fail_unless(legalPair('M', 'M') == 1,"Failed to return true for legal pair MM");
-	fail_unless(legalPair('I', 'M') == 0,"Failed to return false for illegal pair CM");
+	fail_unless(legalPair('I', 'M') == 0,"Failed to return false for illegal pair CM");//there are more legal pairs but this is semi-exhaustive
 	fail_unless(legalPair('X', 'M') == 0,"Failed to return false for illegal pair CM");
+	
 	
 }
 END_TEST
