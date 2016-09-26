@@ -37,14 +37,19 @@ START_TEST(lookAheadTest)
 	//test 2
 	fail_unless(lookAhead(&index, "MC") == 1100,"Failed to return value of M");
 	fail_unless(index == 1,"Failed to return proper index for test 2");
-
-//ah...what have we here? warmer, but not quite. 
+	//No need to keep checking the return value of the index. It works.
+	
+	index = 0;
+	fail_unless(lookAhead(&index, "VM") == -1,"Failed to return -1 for bad input VM");
+	
+	
+//ah...what have we here? warmer, but not quite. We need a base case
 }
 END_TEST
 
 START_TEST(pairValueTest)
 {
-#line 28
+#line 33
 	fail_unless(pairValue('I', 'V') == 4,"Failed to return 4 for IV");
 	fail_unless(pairValue('I', 'I') == 2,"Failed to return 2 for II");
 	fail_unless(pairValue('V', 'I') == 6,"Failed to return 6 for VI");
@@ -55,13 +60,14 @@ START_TEST(pairValueTest)
 	fail_unless(pairValue('X', 'X') == 20,"Failed to return 20 for XX");
 	
 	
-//this is the base case. Is the pair legal or not? now build back toward the convert method
+//this is the base case (because we allready test for individual char values). 
+//Is the pair legal or not? now build this and move up toward the convert method
 }
 END_TEST
 
 START_TEST(legalPairTest)
 {
-#line 40
+#line 46
 	fail_unless(legalPair('I', 'I') == 1,"Failed to return true for legal pair II");
 	fail_unless(legalPair('I', 'V') == 1,"Failed to return true for legal pair IV");
 	fail_unless(legalPair('I', 'X') == 1,"Failed to return true for legal pair IX");

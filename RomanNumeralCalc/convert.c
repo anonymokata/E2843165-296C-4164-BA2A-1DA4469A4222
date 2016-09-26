@@ -10,36 +10,45 @@
 #include "checkSyntax.h"
 #include "convert.h"
 
+_Bool badInput = 0;
+
 int convertFromRomanNumeralToBaseTen(char* numeralString)
 {
-	int total = 0, bound = strlen(numeralString);
+	//TODO : write a way to check for maximum numeral occurrence
+	int total = 0, bound = strlen(numeralString), tempVal;
 	for (int i = 0; i < bound; i++)
 	{
-		total += singleNumeralValue(numeralString[i]);
+		tempVal = lookAhead(&i, numeralString);
+		total += tempVal;
 	}
 	return total;
 }
 
+//lookAhead - looks at current character and the next value
+//uses pairValue to to get their additive or subtractive qualities
+//pairValue uses legalPair to determine if the character set is valid
+//know that I have to implement the max character checking, but couldn't
+//think of a way to drive that with TDD right away.
 int lookAhead(int *indexer, char* numeralString)
 {
 	if (!(numeralString[*indexer + 1]))//is this the last character?
 		return singleNumeralValue(numeralString[*indexer]);
-	printf("the value of indexer + 1 is %d.\n", *indexer + 1);
 	int value = pairValue(numeralString[*indexer], numeralString[*indexer + 1]);
-	*indexer++;
+	*indexer = *indexer + 1;
 	return value;
 }
 
+//if the pair is legal, get its value
 int pairValue(char firstNumeral, char secondNumeral)
 {
 	if (!legalPair(firstNumeral, secondNumeral))
 		return -1;
 	int firstNumeralValue = singleNumeralValue(firstNumeral);
 	int secondNumeralValue = singleNumeralValue(secondNumeral);
-	//if first is less, return 2nd - 1st : else return their sum
 	return firstNumeralValue < secondNumeralValue ? (secondNumeralValue - firstNumeralValue) : (firstNumeralValue + secondNumeralValue);
 }
 
+//checks for a pair of legal numerals
 _Bool legalPair(char first, char second)
 {
 	switch (first)

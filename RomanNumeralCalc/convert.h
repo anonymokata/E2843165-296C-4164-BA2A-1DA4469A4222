@@ -12,5 +12,6 @@ int convertFromRomanNumeralToBaseTen(char* numeralString);
 int singleNumeralValue(char numeral);
 int pairValue(char firstNumeral, char secondNumeral);
 _Bool legalPair(char first, char second);
+int lookAhead(int *indexer, char* numeralString);
 
 #endif /* CONVERT_H_ */
