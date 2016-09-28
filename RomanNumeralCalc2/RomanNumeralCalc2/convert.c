@@ -26,7 +26,7 @@ int lookAhead(char currentChar, char nextChar, int *index)
 	if (nextChar == '\0')
 		return first;
 	int second = convertSingleCharacterToInt(nextChar);
-	if (first == 5 && second != 1)
+	if ((second / first >= 50) || ((first == 5 ||first == 50 || first == 500) && (second >= first)))
 		return 0;
 	if (((5 * first) == second) || ((10 * first) == second))
 		{
