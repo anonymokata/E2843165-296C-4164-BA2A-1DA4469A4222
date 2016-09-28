@@ -8,12 +8,29 @@
 #include "convert.h"
 #include "string.h"
 
-int convertRomanNumeralStringToBaseTenInt(char* numeral)
+int convertRomanNumeralStringToBaseTenInt(char* numeralString)
 {
 	int total = 0;
-	for (int i = 0; i < strlen(numeral); i++)
-		total += convertSingleCharacterToInt(numeral[i]);
+	for (int i = 0; i < strlen(numeralString); i++)
+		total += lookAhead(numeralString[i], numeralString[i+1], &i);
 	return total;
+}
+
+int lookAhead(char currentChar, char nextChar, int *index)
+{
+	int first = convertSingleCharacterToInt(currentChar);
+	if (nextChar == '\0')
+		return first;
+	int second = convertSingleCharacterToInt(nextChar);
+	switch (currentChar)
+	{
+		case 'I' :
+			if (nextChar == 'V' || nextChar == 'X')
+			{
+				*index = *index + 1;
+				return (second - first);
+			}
+	}
 }
 
 int convertSingleCharacterToInt(char numeral)

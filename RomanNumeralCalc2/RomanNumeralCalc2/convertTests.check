@@ -9,7 +9,11 @@
 	fail_unless(convertRomanNumeralStringToBaseTenInt("D") == 500,"Failed to convert D to 500");
 	fail_unless(convertRomanNumeralStringToBaseTenInt("M") == 1000,"Failed to convert M to 1000");
 	
+	fail_unless(convertRomanNumeralStringToBaseTenInt("IV") == 4,"Failed to convert IV to 4");
+	
 	fail_unless(convertRomanNumeralStringToBaseTenInt("VI") == 6,"Failed to convert VI to 6");
 	fail_unless(convertRomanNumeralStringToBaseTenInt("CIII") == 103,"Failed to convert CIII to 103");
 	fail_unless(convertRomanNumeralStringToBaseTenInt("MMCCXXVI") == 2226,"Failed to convert MMCCXXVI to 2226");
+	
+	
 	
