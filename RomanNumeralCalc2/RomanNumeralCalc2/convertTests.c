@@ -29,6 +29,8 @@ START_TEST(convertFromRomanNumeralToBaseTenTest)
 	fail_unless(convertRomanNumeralStringToBaseTenInt("XC") == 90,"Failed to convert XC to  90");
 	fail_unless(convertRomanNumeralStringToBaseTenInt("CD") == 400,"Failed to convert CD to 400");
 	fail_unless(convertRomanNumeralStringToBaseTenInt("CM") == 900,"Failed to convert CM to  900");
+	
+	fail_unless(convertRomanNumeralStringToBaseTenInt("MCMXXVII") == 1927,"Failed to convert MCMXXVII to 1927");
 }
 END_TEST
 

@@ -22,29 +22,12 @@ int lookAhead(char currentChar, char nextChar, int *index)
 	if (nextChar == '\0')
 		return first;
 	int second = convertSingleCharacterToInt(nextChar);
-	switch (currentChar)
-	{
-		case 'I' :
-			if (nextChar == 'V' || nextChar == 'X')
-			{
-				*index += 1;
-				return (second - first);
-			}
-		case 'X' :
-		if (nextChar == 'L' || nextChar == 'C')
+	if (((5 * first) == second) || ((10 * first) == second))
 		{
 			*index += 1;
 			return (second - first);
 		}
-		case 'C' :
-		if (nextChar == 'D' || nextChar == 'M')
-			{
-				*index += 1;
-				return (second - first);
-			}
-		default :
-			return first;
-	}
+	return first;
 }
 
 int convertSingleCharacterToInt(char numeral)
