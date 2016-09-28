@@ -30,6 +30,8 @@ int lookAhead(char currentChar, char nextChar, int *index)
 				*index = *index + 1;
 				return (second - first);
 			}
+		default :
+			return first;
 	}
 }
 
