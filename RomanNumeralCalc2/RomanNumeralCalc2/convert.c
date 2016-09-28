@@ -36,6 +36,12 @@ int lookAhead(char currentChar, char nextChar, int *index)
 			*index += 1;
 			return (second - first);
 		}
+		case 'C' :
+		if (nextChar == 'D' || nextChar == 'M')
+			{
+				*index += 1;
+				return (second - first);
+			}
 		default :
 			return first;
 	}
