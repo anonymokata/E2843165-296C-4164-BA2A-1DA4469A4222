@@ -12,7 +12,11 @@ int convertRomanNumeralStringToBaseTenInt(char* numeralString)
 {
 	int total = 0;
 	for (int i = 0; i < strlen(numeralString); i++)
+	{
 		total += lookAhead(numeralString[i], numeralString[i+1], &i);
+		if (total == 0)
+			return 0;
+	}
 	return total;
 }
 
@@ -22,6 +26,8 @@ int lookAhead(char currentChar, char nextChar, int *index)
 	if (nextChar == '\0')
 		return first;
 	int second = convertSingleCharacterToInt(nextChar);
+	if (first == 5 && second != 1)
+		return 0;
 	if (((5 * first) == second) || ((10 * first) == second))
 		{
 			*index += 1;
@@ -49,5 +55,5 @@ int convertSingleCharacterToInt(char numeral)
 		case 'M' :
 			return 1000;
 	}
-
+	return 0;
 }
