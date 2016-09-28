@@ -4,11 +4,16 @@
  *  Created on: Sep 27, 2016
  *      Author: brad
  */
+#include "stdio.h"
 #include "convert.h"
+#include "string.h"
 
 int convertRomanNumeralStringToBaseTenInt(char* numeral)
 {
-	return convertSingleCharacterToInt(numeral[0]);
+	int total = 0;
+	for (int i = 0; i < strlen(numeral); i++)
+		total += convertSingleCharacterToInt(numeral[i]);
+	return total;
 }
 
 int convertSingleCharacterToInt(char numeral)
