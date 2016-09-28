@@ -37,9 +37,7 @@ convertTests.o: convertTests.c convert.h
 #******************************************************************
 
 #go ahead and run the tests while we are at it
-runTests: runConvertTests
-
-runConverTests: convertTests
+runTests: convertTests
 	./convertTests
 	
 #******************************************************************

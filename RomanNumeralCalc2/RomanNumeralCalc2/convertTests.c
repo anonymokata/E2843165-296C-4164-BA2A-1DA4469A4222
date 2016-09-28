@@ -11,7 +11,13 @@
 START_TEST(convertFromRomanNumeralToBaseTenTest)
 {
 #line 4
-	fail_unless(convertFromRomanNumeralToBaseTen("I") == 1,"Failed to convert I to 1");
+	fail_unless(convertRomanNumeralStringToBaseTenInt("I") == 1,"Failed to convert I to 1");
+	fail_unless(convertRomanNumeralStringToBaseTenInt("V") == 5,"Failed to convert V to 5");
+	fail_unless(convertRomanNumeralStringToBaseTenInt("X") == 10,"Failed to convert X to 10");
+	fail_unless(convertRomanNumeralStringToBaseTenInt("L") == 50,"Failed to convert L to 50");
+	fail_unless(convertRomanNumeralStringToBaseTenInt("C") == 100,"Failed to convert C to 100");
+	fail_unless(convertRomanNumeralStringToBaseTenInt("D") == 500,"Failed to convert D to 500");
+	fail_unless(convertRomanNumeralStringToBaseTenInt("M") == 1000,"Failed to convert M to 1000");
 	
 }
 END_TEST
