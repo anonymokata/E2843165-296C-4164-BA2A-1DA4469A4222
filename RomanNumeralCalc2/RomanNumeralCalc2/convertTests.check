@@ -14,4 +14,7 @@
 	fail_unless(convertRomanNumeralStringToBaseTenInt("MMCCXXVI") == 2226,"Failed to convert MMCCXXVI to 2226");
 	
 	fail_unless(convertRomanNumeralStringToBaseTenInt("IV") == 4,"Failed to convert IV to 4");
+	fail_unless(convertRomanNumeralStringToBaseTenInt("IX") == 9,"Failed to convert IX to 9");
+	fail_unless(convertRomanNumeralStringToBaseTenInt("XL") == 40,"Failed to convert XL to 40");
+	fail_unless(convertRomanNumeralStringToBaseTenInt("XC") == 90,"Failed to convert XC to  90");
 	

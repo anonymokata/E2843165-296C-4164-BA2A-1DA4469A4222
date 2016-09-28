@@ -27,9 +27,15 @@ int lookAhead(char currentChar, char nextChar, int *index)
 		case 'I' :
 			if (nextChar == 'V' || nextChar == 'X')
 			{
-				*index = *index + 1;
+				*index += 1;
 				return (second - first);
 			}
+		case 'X' :
+		if (nextChar == 'L' || nextChar == 'C')
+		{
+			*index += 1;
+			return (second - first);
+		}
 		default :
 			return first;
 	}
