@@ -61,63 +61,55 @@ int convertSingleCharacterToInt(char numeral)
 
 char* convertIntToRomanNumeral(int number)
 {
-	char * numeralString = malloc (sizeof(char) * 25);
-	numeralString[0] = 'I';
-	printf("%s\n", numeralString);
+	int temp = number;
+	char *numeralString = malloc (sizeof(char) * 25);
+	int index = 0;
+	do
+	{
+		numeralString[index] = convertIntegerValueToNumeralChar(&temp);
+		index++;
+	}
+	while (temp > 0);
 	return numeralString;
+
 }
 
-
-/*int* temp;
-*temp = number;
-printf("initial val = %d\n", *temp);
-char numeralString[25];
-	for (int i = 0; i < 25; i++)
-		{
-			numeralString[i] = convertIntegerValueToNumeral(temp);
-			printf("value = %s\n", numeralString);
-			if (temp == 0)
-				break;
-		}
-	return numeralString;
-	*/
-char convertIntegerValueToNumeral(int* integer)
+char convertIntegerValueToNumeralChar(int* number)
 {
-	if ((*integer / 1000) >= 0)
+	if (*number >= 1000)
 	{
-		*integer -= 1000;
+		*number -= 1000;
 		return 'M';
 	}
-	if ((*integer / 500) >= 0)
+	if (*number >= 500)
 	{
-		*integer -= 500;
+		*number -= 500;
 		return 'D';
 	}
-	if ((*integer / 100) >= 0)
+	if (*number >= 100)
 	{
-		*integer -= 100;
+		*number -= 100;
 		return 'C';
 	}
-	if ((*integer / 50) >= 0)
+	if (*number >= 50)
 	{
-		*integer -= 50;
+		*number -= 50;
 		return 'L';
 	}
-	if ((*integer / 10) >= 0)
+	if (*number >= 10)
 	{
-		*integer -= 10;
+		*number -= 10;
 		return 'X';
 	}
-	if ((*integer / 5) >= 0)
+	if (*number >= 5)
 	{
-		*integer -= 5;
+		*number -= 5;
 		return 'V';
 	}
-	if ((*integer / 1) >= 0)
+	if (*number >= 1)
 	{
-		*integer -= 1;
+		*number -= 1;
 		return 'I';
 	}
-
 }
 
