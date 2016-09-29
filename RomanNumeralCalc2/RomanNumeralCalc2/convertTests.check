@@ -27,3 +27,7 @@
 	fail_unless(convertRomanNumeralStringToBaseTenInt("ID") == 0,"Failed to recognize bad input, ID");
 	fail_unless(convertRomanNumeralStringToBaseTenInt("XD") == 0,"Failed to recognize bad input, XD");
 	
+#test convertIntToRomanNumeralTest
+	ck_assert_msg(strcmp(convertIntToRomanNumeral(1),  "I") == 0,"Failed to convert 1 to I");
+	//ck_assert_msg(strcmp(convertIntToRomanNumeral(1000),  "M") == 0,"Failed to convert 1000 to M");
+	//ck_assert_msg(strcmp(convertIntToRomanNumeral(1500),  "MD") == 0,"Failed to convert 1500 to MD");

@@ -11,5 +11,7 @@
 int convertRomanNumeralStringToBaseTenInt(char* numeral);
 int convertSingleCharacterToInt(char numeral);
 int lookAhead(char first, char second, int *index);
+char* convertIntToRomanNumeral(int number);
+char convertIntegerValueToNumeral(int* integer);
 
 #endif /* CONVERT_H_ */

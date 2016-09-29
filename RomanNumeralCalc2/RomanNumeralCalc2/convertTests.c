@@ -40,6 +40,15 @@ START_TEST(convertFromRomanNumeralToBaseTenTest)
 }
 END_TEST
 
+START_TEST(convertIntToRomanNumeralTest)
+{
+#line 31
+	ck_assert_msg(strcmp(convertIntToRomanNumeral(1),  "I") == 0,"Failed to convert 1 to I");
+	//ck_assert_msg(strcmp(convertIntToRomanNumeral(1000),  "M") == 0,"Failed to convert 1000 to M");
+	//ck_assert_msg(strcmp(convertIntToRomanNumeral(1500),  "MD") == 0,"Failed to convert 1500 to MD");
+}
+END_TEST
+
 int main(void)
 {
     Suite *s1 = suite_create("Core");
@@ -49,6 +58,7 @@ int main(void)
 
     suite_add_tcase(s1, tc1_1);
     tcase_add_test(tc1_1, convertFromRomanNumeralToBaseTenTest);
+    tcase_add_test(tc1_1, convertIntToRomanNumeralTest);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);
