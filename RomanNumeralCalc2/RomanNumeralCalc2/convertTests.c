@@ -49,6 +49,11 @@ START_TEST(convertIntToRomanNumeralTest)
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(3200),  "MMMCC") == 0,"Failed to convert 3200 to MMMCC");
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(65),  "LXV") == 0,"Failed to convert 3200 to MMMCC");
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(4),  "IV") == 0,"Failed to convert 4 to IV");
+	ck_assert_msg(strcmp(convertIntToRomanNumeralString(9),  "IX") == 0,"Failed to convert 9 to IX");
+	ck_assert_msg(strcmp(convertIntToRomanNumeralString(40),  "XL") == 0,"Failed to convert 44 to XL");
+	ck_assert_msg(strcmp(convertIntToRomanNumeralString(90),  "XC") == 0,"Failed to convert 90 to XC");
+	ck_assert_msg(strcmp(convertIntToRomanNumeralString(400),  "CD") == 0,"Failed to convert 400 to CD");
+	ck_assert_msg(strcmp(convertIntToRomanNumeralString(900),  "CM") == 0,"Failed to convert 900 to CM");
 }
 END_TEST
 

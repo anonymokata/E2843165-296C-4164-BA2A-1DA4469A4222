@@ -79,25 +79,50 @@ char convertIntegerValueToNumeralChar(int* number)
 		*number -= 1000;
 		return 'M';
 	}
+	if (*number >= 900)
+	{
+		*number += 100;
+		return 'C';
+	}
 	if (*number >= 500)
 	{
 		*number -= 500;
 		return 'D';
+	}
+	if (*number >= 400)
+	{
+		*number += 100;
+		return 'C';
 	}
 	if (*number >= 100)
 	{
 		*number -= 100;
 		return 'C';
 	}
+	if (*number >= 90)
+	{
+		*number += 10;
+		return 'X';
+	}
 	if (*number >= 50)
 	{
 		*number -= 50;
 		return 'L';
 	}
+	if (*number >= 40)
+	{
+		*number += 10;
+		return 'X';
+	}
 	if (*number >= 10)
 	{
 		*number -= 10;
 		return 'X';
+	}
+	if (*number >= 9)
+	{
+		*number += 1;
+		return 'I';
 	}
 	if (*number >= 5)
 	{
