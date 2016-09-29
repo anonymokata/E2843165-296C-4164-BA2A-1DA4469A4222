@@ -59,19 +59,17 @@ int convertSingleCharacterToInt(char numeral)
 	return 0;
 }
 
-char* convertIntToRomanNumeral(int number)
+char* convertIntToRomanNumeralString(int number)
 {
-	int temp = number;
 	char *numeralString = malloc (sizeof(char) * 25);
 	int index = 0;
 	do
 	{
-		numeralString[index] = convertIntegerValueToNumeralChar(&temp);
+		numeralString[index] = convertIntegerValueToNumeralChar(&number);
 		index++;
 	}
-	while (temp > 0);
+	while (number > 0);
 	return numeralString;
-
 }
 
 char convertIntegerValueToNumeralChar(int* number)
@@ -105,6 +103,11 @@ char convertIntegerValueToNumeralChar(int* number)
 	{
 		*number -= 5;
 		return 'V';
+	}
+	if (*number >= 4)
+	{
+		*number += 1;
+		return 'I';
 	}
 	if (*number >= 1)
 	{

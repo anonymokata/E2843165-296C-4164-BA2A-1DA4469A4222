@@ -28,8 +28,9 @@
 	fail_unless(convertRomanNumeralStringToBaseTenInt("XD") == 0,"Failed to recognize bad input, XD");
 	
 #test convertIntToRomanNumeralTest
-	ck_assert_msg(strcmp(convertIntToRomanNumeral(1),  "I") == 0,"Failed to convert 1 to I");
-	ck_assert_msg(strcmp(convertIntToRomanNumeral(1000),  "M") == 0,"Failed to convert 1000 to M");
-	ck_assert_msg(strcmp(convertIntToRomanNumeral(1500),  "MD") == 0,"Failed to convert 1500 to MD");
-	ck_assert_msg(strcmp(convertIntToRomanNumeral(3200),  "MMMCC") == 0,"Failed to convert 3200 to MMMCC");
-	ck_assert_msg(strcmp(convertIntToRomanNumeral(65),  "LXV") == 0,"Failed to convert 3200 to MMMCC");
+	ck_assert_msg(strcmp(convertIntToRomanNumeralString(1),  "I") == 0,"Failed to convert 1 to I");
+	ck_assert_msg(strcmp(convertIntToRomanNumeralString(1000),  "M") == 0,"Failed to convert 1000 to M");
+	ck_assert_msg(strcmp(convertIntToRomanNumeralString(1500),  "MD") == 0,"Failed to convert 1500 to MD");
+	ck_assert_msg(strcmp(convertIntToRomanNumeralString(3200),  "MMMCC") == 0,"Failed to convert 3200 to MMMCC");
+	ck_assert_msg(strcmp(convertIntToRomanNumeralString(65),  "LXV") == 0,"Failed to convert 3200 to MMMCC");
+	ck_assert_msg(strcmp(convertIntToRomanNumeralString(4),  "IV") == 0,"Failed to convert 4 to IV");
