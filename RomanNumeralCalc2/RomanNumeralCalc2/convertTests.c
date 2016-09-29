@@ -54,6 +54,16 @@ START_TEST(convertIntToRomanNumeralTest)
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(90),  "XC") == 0,"Failed to convert 90 to XC");
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(400),  "CD") == 0,"Failed to convert 400 to CD");
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(900),  "CM") == 0,"Failed to convert 900 to CM");
+
+}
+END_TEST
+
+START_TEST(exceedsMaximum)
+{
+#line 44
+	fail_unless(convertRomanNumeralStringToBaseTenInt("MMMCMXCIXI") == 0,"Failed to rejct number larger than 3999");
+	
+	
 }
 END_TEST
 
@@ -67,6 +77,7 @@ int main(void)
     suite_add_tcase(s1, tc1_1);
     tcase_add_test(tc1_1, convertFromRomanNumeralToBaseTenTest);
     tcase_add_test(tc1_1, convertIntToRomanNumeralTest);
+    tcase_add_test(tc1_1, exceedsMaximum);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);

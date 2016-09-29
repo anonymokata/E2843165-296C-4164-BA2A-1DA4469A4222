@@ -15,7 +15,7 @@ int convertRomanNumeralStringToBaseTenInt(char* numeralString)
 	for (int i = 0; i < strlen(numeralString); i++)
 	{
 		total += lookAhead(numeralString[i], numeralString[i+1], &i);
-		if (total == 0)
+		if (total == 0 || total > 3999)
 			return 0;
 	}
 	return total;
