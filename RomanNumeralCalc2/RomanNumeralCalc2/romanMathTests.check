@@ -1,0 +1,4 @@
+#include "romanMath.h"
+
+#test additionCheck
+	ck_assert_msg(strcmp(add("V", "I"), "VI") == 0,"Failed to add V + I");
