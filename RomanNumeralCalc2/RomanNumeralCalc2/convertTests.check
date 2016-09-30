@@ -32,7 +32,7 @@
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(1000),  "M") == 0,"Failed to convert 1000 to M");
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(1500),  "MD") == 0,"Failed to convert 1500 to MD");
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(3200),  "MMMCC") == 0,"Failed to convert 3200 to MMMCC");
-	ck_assert_msg(strcmp(convertIntToRomanNumeralString(65),  "LXV") == 0,"Failed to convert 3200 to MMMCC");
+	ck_assert_msg(strcmp(convertIntToRomanNumeralString(65),  "LXV") == 0,"Failed to convert 65 to LXV");
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(4),  "IV") == 0,"Failed to convert 4 to IV");
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(9),  "IX") == 0,"Failed to convert 9 to IX");
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(40),  "XL") == 0,"Failed to convert 44 to XL");

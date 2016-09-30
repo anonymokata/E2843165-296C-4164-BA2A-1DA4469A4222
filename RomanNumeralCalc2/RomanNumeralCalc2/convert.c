@@ -79,84 +79,70 @@ int convertSingleCharacterToInt(char numeral)
 char* convertIntToRomanNumeralString(int number)
 {
 	char *numeralString = malloc (sizeof(char) * 16);
-	int index = 0;
-	while (number > 0)
+	numeralString[0] = 0;
+	while (number >= 1000)
 	{
-		numeralString[index] = convertIntegerValueToNumeralChar(&number);
-		index++;
+		number -= 1000;
+		strcat(numeralString, "M");
+	}
+	if(number >= 900)
+	{
+		number -= 900;
+		strcat(numeralString, "CM");
+	}
+	if (number >= 500)
+	{
+		number -= 500;
+		strcat(numeralString, "D");
+	}
+	if (number >= 400)
+	{
+		number -= 400;
+		strcat(numeralString, "CD");
+	}
+	while (number >= 100)
+	{
+		number -= 100;
+		strcat(numeralString, "C");
+	}
+	if (number >= 90)
+	{
+		number -= 90;
+		strcat(numeralString, "XC");
+	}
+	if (number >= 50)
+	{
+		number -= 50;
+		strcat(numeralString, "L");
+	}
+	if (number >= 40)
+	{
+		number -= 40;
+		strcat(numeralString, "XL");
+	}
+	while (number >= 10)
+	{
+		number -= 10;
+		strcat(numeralString, "X");
+	}
+	if (number >= 9)
+	{
+		number -= 9;
+		strcat(numeralString, "IX");
+	}
+	if (number == 5)
+	{
+		return strcat(numeralString, "V");
+	}
+	if (number == 4)
+	{
+		return strcat(numeralString, "IV");
+	}
+	while(number >= 1)
+	{
+		number -= 1;
+		strcat(numeralString, "I");
 	}
 	return numeralString;
-}
-
-char convertIntegerValueToNumeralChar(int* number)
-{
-	//I'm not as happy about this solution. It just doens't feel as tidy.
-	if (*number >= 1000)
-	{
-		*number -= 1000;
-		return 'M';
-	}
-	if (*number >= 900)
-	{
-		*number += 100;
-		return 'C';
-	}
-	if (*number >= 500)
-	{
-		*number -= 500;
-		return 'D';
-	}
-	if (*number >= 400)
-	{
-		*number += 100;
-		return 'C';
-	}
-	if (*number >= 100)
-	{
-		*number -= 100;
-		return 'C';
-	}
-	if (*number >= 90)
-	{
-		*number += 10;
-		return 'X';
-	}
-	if (*number >= 50)
-	{
-		*number -= 50;
-		return 'L';
-	}
-	if (*number >= 40)
-	{
-		*number += 10;
-		return 'X';
-	}
-	if (*number >= 10)
-	{
-		*number -= 10;
-		return 'X';
-	}
-	if (*number >= 9)
-	{
-		*number += 1;
-		return 'I';
-	}
-	if (*number >= 5)
-	{
-		*number -= 5;
-		return 'V';
-	}
-	if (*number >= 4)
-	{
-		*number += 1;
-		return 'I';
-	}
-	if (*number >= 1)
-	{
-		*number -= 1;
-		return 'I';
-	}
-	return '%';//this will never be reached (because we are guaranteed good input if we ever get to this function)
-			   //but it removes the warning that eclipse was giving.
 }
 
