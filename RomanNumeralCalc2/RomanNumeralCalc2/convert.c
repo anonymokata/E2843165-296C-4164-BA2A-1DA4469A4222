@@ -125,19 +125,12 @@ char* convertIntToRomanNumeralString(int number)
 		number -= 10;
 		strcat(numeralString, "X");
 	}
-	if (number >= 9)
-	{
-		number -= 9;
-		strcat(numeralString, "IX");
-	}
-	if (number == 5)
-	{
+	if (number == 9)
+		return strcat(numeralString, "IX");
+	else if (number == 5)
 		return strcat(numeralString, "V");
-	}
-	if (number == 4)
-	{
+	else if (number == 4)
 		return strcat(numeralString, "IV");
-	}
 	while(number >= 1)
 	{
 		number -= 1;
