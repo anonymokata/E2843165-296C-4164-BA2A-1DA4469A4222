@@ -6,9 +6,13 @@
  */
 #include <stdio.h>
 #include "convert.h"
+#include "romanMath.h"
 
 char *add(char *a, char *b)
 {
-	return "II";
+	int termA = convertRomanNumeralStringToBaseTenInt(a);
+	int termB = convertRomanNumeralStringToBaseTenInt(b);
+	printf("%s\n", convertIntToRomanNumeralString(termA + termB));
+	return convertIntToRomanNumeralString(termA + termB);
 }
 

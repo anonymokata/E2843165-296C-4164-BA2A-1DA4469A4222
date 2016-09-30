@@ -9,7 +9,7 @@ CFLAGS=-g -std=c99 -Wall -Werror
 LIBS=-lcheck -pthread -lm -lrt
 
 convertObjects=convert.o convertTests.o
-mathObjects = romanMath.o romanMathTests.o
+mathObjects = romanMath.o romanMathTests.o convert.o
 
 all: makeConvertTests.c makeMathTests.c compConvert compMath runTests
 
@@ -45,7 +45,7 @@ convert.o: convert.c convert.h
 convertTests.o: convertTests.c convert.h
 	 $(CC) $(CLFAGS) -c convertTests.c
 	 
-romanMath.o: romanMath.c romanMath.h
+romanMath.o: romanMath.c romanMath.h 
 	$(CC) $(CFLAGS) -std=c99 -c romanMath.c
 
 romanMathTests.o: romanMathTests.c romanMath.h

@@ -12,6 +12,7 @@ START_TEST(additionCheck)
 {
 #line 4
 	ck_assert_msg(strcmp(add("V", "I"), "VI") == 0,"Failed to add V + I");
+	ck_assert_msg(strcmp(add("XXXII", "LXIV"), "XCVI") == 0, "Failed to add XXXII + LXIV"); 
 }
 END_TEST
 

@@ -127,8 +127,11 @@ char* convertIntToRomanNumeralString(int number)
 	}
 	if (number == 9)
 		return strcat(numeralString, "IX");
-	else if (number == 5)
-		return strcat(numeralString, "V");
+	else if (number >= 5)
+		{
+			number -= 5;
+			strcat(numeralString, "V");
+		}
 	else if (number == 4)
 		return strcat(numeralString, "IV");
 	while(number >= 1)

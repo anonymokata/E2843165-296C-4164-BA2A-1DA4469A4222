@@ -2,3 +2,4 @@
 
 #test additionCheck
 	ck_assert_msg(strcmp(add("V", "I"), "VI") == 0,"Failed to add V + I");
+	ck_assert_msg(strcmp(add("XXXII", "LXIV"), "XCVI") == 0, "Failed to add XXXII + LXIV"); 
