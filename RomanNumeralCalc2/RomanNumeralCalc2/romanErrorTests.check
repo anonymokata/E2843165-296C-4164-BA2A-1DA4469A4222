@@ -6,13 +6,15 @@
 
 
 #test badRomanNumeralCharacter
-	fail_unless(convertSingleCharacterToInt('J') == -1, "Conversion of non Roman Numeral to int test failed");
+	ck_assert_int_eq(convertSingleCharacterToInt('J'), -1);//, "Conversion of non Roman Numeral to int test failed");
 	//now test for lookAhead since it uses the character conversion
 	
 #test badlookAheadPairs
 	int index = 0;
-	ck_assert_msg(lookAhead('J', '%', &index) == -1, "Conversion of non Roman Numeral to int test failed (lookAhead)");
-	ck_assert_msg(lookAhead('I', 'F', &index) == -1, "Conversion of non Roman Numeral to int test failed (lookAhead)");
-	ck_assert_msg(lookAhead('^', 'V', &index) == -1, "Conversion of non Roman Numeral to int test failed (lookAhead)");
+	fail_unless(lookAhead('J', '%', &index) == -1, "Conversion of non Roman Numeral to int test failed (lookAhead)");
+	fail_unless(lookAhead('I', 'F', &index) == -1, "Conversion of non Roman Numeral to int test failed (lookAhead)");
+	fail_unless(lookAhead('^', 'V', &index) == -1, "Conversion of non Roman Numeral to int test failed (lookAhead)");
+	fail_unless(lookAhead('V', 'V', &index) == -2, "Conversion of bad numeral pair to int test failed (lookAhead)");
 	
-	
+#test badConversionToBaseTen
+	ck_assert_msg(convertRomanNumeralStringToBaseTenInt("MC%") == 0, "convertRomanNumeralStringToBaseTen fails to catch bad input MC%");
