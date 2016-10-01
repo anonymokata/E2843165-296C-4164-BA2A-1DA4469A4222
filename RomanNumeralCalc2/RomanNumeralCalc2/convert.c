@@ -53,6 +53,8 @@ int lookAhead(char currentChar, char nextChar, int *index)
 	if (nextChar != '\0')
 	{
 		int second = convertSingleCharacterToInt(nextChar);
+		if (first == -1 || second == -1)
+			return -1;
 		if ((second / first >= 50) || ((first == 5 ||first == 50 || first == 500) && (second >= first)))
 			return 0;
 		if (((5 * first) == second) || ((10 * first) == second))//same thing for subtraction.

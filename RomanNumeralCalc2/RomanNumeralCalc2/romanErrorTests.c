@@ -16,7 +16,21 @@
 START_TEST(badRomanNumeralCharacter)
 {
 #line 9
-	ck_assert_msg(convertSingleCharacterToInt('J') == -1, "Conversion of non Roman Numeral to int test failed");
+	fail_unless(convertSingleCharacterToInt('J') == -1, "Conversion of non Roman Numeral to int test failed");
+	//now test for lookAhead since it uses the character conversion
+	
+}
+END_TEST
+
+START_TEST(badlookAheadPairs)
+{
+#line 13
+	int index = 0;
+	ck_assert_msg(lookAhead('J', '%', &index) == -1, "Conversion of non Roman Numeral to int test failed (lookAhead)");
+	ck_assert_msg(lookAhead('I', 'F', &index) == -1, "Conversion of non Roman Numeral to int test failed (lookAhead)");
+	ck_assert_msg(lookAhead('^', 'V', &index) == -1, "Conversion of non Roman Numeral to int test failed (lookAhead)");
+	
+	
 }
 END_TEST
 
@@ -29,6 +43,7 @@ int main(void)
 
     suite_add_tcase(s1, tc1_1);
     tcase_add_test(tc1_1, badRomanNumeralCharacter);
+    tcase_add_test(tc1_1, badlookAheadPairs);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);

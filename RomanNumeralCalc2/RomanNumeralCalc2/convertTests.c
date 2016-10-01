@@ -19,6 +19,7 @@ START_TEST(convertFromRomanNumeralToBaseTenTest)
 	fail_unless(convertRomanNumeralStringToBaseTenInt("D") == 500,"Failed to convert D to 500");
 	fail_unless(convertRomanNumeralStringToBaseTenInt("M") == 1000,"Failed to convert M to 1000");
 	
+	
 	fail_unless(convertRomanNumeralStringToBaseTenInt("VI") == 6,"Failed to convert VI to 6");
 	fail_unless(convertRomanNumeralStringToBaseTenInt("CIII") == 103,"Failed to convert CIII to 103");
 	fail_unless(convertRomanNumeralStringToBaseTenInt("MMCCXXVI") == 2226,"Failed to convert MMCCXXVI to 2226");
@@ -42,7 +43,7 @@ END_TEST
 
 START_TEST(convertIntToRomanNumeralTest)
 {
-#line 31
+#line 32
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(1),  "I") == 0,"Failed to convert 1 to I");
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(1000),  "M") == 0,"Failed to convert 1000 to M");
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(1500),  "MD") == 0,"Failed to convert 1500 to MD");
@@ -61,7 +62,7 @@ END_TEST
 
 START_TEST(exceedsMaximum)
 {
-#line 45
+#line 46
 	fail_unless(convertRomanNumeralStringToBaseTenInt("MMMCMXCIXI") == 0,"Failed to rejct number larger than 3999");
 }
 END_TEST
