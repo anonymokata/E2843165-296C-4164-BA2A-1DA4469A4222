@@ -24,6 +24,7 @@ START_TEST(subtractionCheck)
 {
 #line 11
 	ck_assert_msg(strcmp(sub("V", "I"), "IV") == 0,"Failed to subtract V - I");
+	ck_assert_msg(strcmp(sub("DCLIX", "XCIX"), "DLX") == 0,"Failed to subtract DCLIX - XCIX");
 }
 END_TEST
 

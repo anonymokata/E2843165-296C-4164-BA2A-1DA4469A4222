@@ -63,8 +63,6 @@ START_TEST(exceedsMaximum)
 {
 #line 45
 	fail_unless(convertRomanNumeralStringToBaseTenInt("MMMCMXCIXI") == 0,"Failed to rejct number larger than 3999");
-	
-	
 }
 END_TEST
 

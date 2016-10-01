@@ -1,0 +1,37 @@
+        -:    0:Source:romanMathTests.check
+        -:    0:Graph:romanMathTests.gcno
+        -:    0:Data:romanMathTests.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdlib.h>
+        -:    2:#include "romanMath.h"
+        -:    3:
+        1:    4:#test additionCheck
+        1:    5:	ck_assert_msg(strcmp(add("V", "I"), "VI") == 0,"Failed to add V + I");
+        1:    6:	ck_assert_msg(strcmp(add("XXXII", "LXIV"), "XCVI") == 0, "Failed to add XXXII + LXIV"); 
+        1:    7:	ck_assert_msg(strcmp(add("IV", "V"), "IX") == 0, "Failed to add IV + V");
+        1:    8:	ck_assert_msg(strcmp(add("MMMCMXCVIII", "I"), "MMMCMXCIX") == 0, "Failed to add MMMCMXCVIII + I");
+        1:    9:	ck_assert_msg(strcmp(add("MMMDCCCLXXXVIII", "II"), "MMMDCCCXC") == 0, "Failed to add MMMDCCCLXXXVIII + II");
+        -:   10:	
+        -:   11:#test subtractionCheck
+        2:   12:	ck_assert_msg(strcmp(sub("V", "I"), "IV") == 0,"Failed to subtract V - I");
+        1:   13:	ck_assert_msg(strcmp(sub("DCLIX", "XCIX"), "DLX") == 0,"Failed to subtract DCLIX - XCIX");
+        1:   14:/*EOF*/
+        1:   15:/*EOF*/
+        -:   16:/*EOF*/
+        3:   17:/*EOF*/
+        -:   18:/*EOF*/
+        3:   19:/*EOF*/
+        3:   20:/*EOF*/
+        3:   21:/*EOF*/
+        -:   22:/*EOF*/
+        -:   23:/*EOF*/
+        3:   24:/*EOF*/
+        3:   25:/*EOF*/
+        3:   26:/*EOF*/
+        -:   27:/*EOF*/
+        3:   28:/*EOF*/
+        1:   29:/*EOF*/
+        1:   30:/*EOF*/
+        -:   31:/*EOF*/
+        1:   32:/*EOF*/

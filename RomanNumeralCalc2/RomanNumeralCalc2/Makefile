@@ -4,14 +4,15 @@
 
 #create our compiler and flags variables
 CC=gcc
-CFLAGS=-g -std=c99 -Wall -Werror
+CFLAGS=-g -std=c99 -Wall -Werror 
 #    link check and include the math? and timer? libs that are throwing errors
 LIBS=-lcheck -pthread -lm -lrt
 
 convertObjects=convert.o convertTests.o
-mathObjects = romanMath.o romanMathTests.o convert.o
+mathObjects=romanMath.o romanMathTests.o convert.o
+errorObjects=romanError.o romanErrorTests.o
 
-all: makeConvertTests.c makeMathTests.c compConvert compMath runTests
+all: makeConvertTests.c makeMathTests.c makeErrorTests.c compConvert compMath  compError runTests
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< 
@@ -24,6 +25,9 @@ makeConvertTests.c: convertTests.check
 
 makeMathTests.c: romanMathTests.check
 	checkmk romanMathTests.check >romanMathTests.c
+	
+makeErrorTests.c: romanErrorTests.check
+	checkmk romanErrorTests.check >romanErrorTests.c
 #******************************************************************
 
 #create convertTests executable by linking the convert objects
@@ -35,6 +39,9 @@ compConvert: $(convertObjects)
 	
 compMath: $(mathObjects)
 	$(CC) $(CFLAGS) $(mathObjects) -o romanMathTests $(LIBS)
+	
+compError: $(errorObjects)
+	$(CC) $(CFLAGS) $(errorObjects) -o romanErrorTests $(LIBS)
 #******************************************************************
 
 #compile convert.c, make convert object
@@ -50,16 +57,25 @@ romanMath.o: romanMath.c romanMath.h
 
 romanMathTests.o: romanMathTests.c romanMath.h
 	$(CC) $(CFLAGS) -std=c99 -c romanMathTests.c
+
+romanError.o: romanError.c romanError.h
+	$(CC) $(CFLAGS) -std=c99 -c romanError.c
+	
+romanErrorTests.o: romanErrorTests.c romanError.h
+	$(CC) $(CFLAGS) -std=c99 -c romanErrorTests.c
 #******************************************************************
 
 #go ahead and run the tests while we are at it
-runTests: convert math
+runTests: convert math error
 
 convert: convertTests
 	./convertTests
 	
 math: romanMathTests
 	./romanMathTests
+
+error: romanErrorTests
+	./romanErrorTests
 	
 #******************************************************************
 clean:

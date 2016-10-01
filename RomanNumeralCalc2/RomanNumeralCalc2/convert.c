@@ -152,4 +152,3 @@ char* convertIntToRomanNumeralString(int number)
 	}
 	return numeralString;
 }
-

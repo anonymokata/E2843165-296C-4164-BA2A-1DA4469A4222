@@ -1,0 +1,6 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "romanError.h"
+
+#test badInput
+	ck_assert(showMessage(0) == NULL);
