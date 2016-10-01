@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "romanError.h"
+#include "convert.h"
 
 #test badInput
-	ck_assert(showMessage(0) == NULL);
+	ck_assert(showMessage(convertSingleCharacterToInt('J'), NULL) == NULL);

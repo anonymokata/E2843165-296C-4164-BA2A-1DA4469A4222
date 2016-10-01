@@ -7,9 +7,11 @@
 #include <stdio.h>
 #include "romanError.h"
 
-char *showMessage(int messageType)
+char *showMessage(int messageType, char *value)
 {
-
+	char *messages[1];
+	messages[0] = "Character not recognized ";
+	printf("%s%s\n", messages[messageType], value);
 	return NULL;
 }
 

@@ -9,11 +9,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "romanError.h"
+#include "convert.h"
 
 START_TEST(badInput)
 {
-#line 6
-	ck_assert(showMessage(0) == NULL);
+#line 7
+	ck_assert(showMessage(convertSingleCharacterToInt('J'), NULL) == NULL);
 }
 END_TEST
 

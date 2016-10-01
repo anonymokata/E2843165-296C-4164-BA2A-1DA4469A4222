@@ -10,7 +10,7 @@ LIBS=-lcheck -pthread -lm -lrt
 
 convertObjects=convert.o convertTests.o
 mathObjects=romanMath.o romanMathTests.o convert.o
-errorObjects=romanError.o romanErrorTests.o
+errorObjects=romanError.o romanErrorTests.o convert.o
 
 all: makeConvertTests.c makeMathTests.c makeErrorTests.c compConvert compMath  compError runTests
 
