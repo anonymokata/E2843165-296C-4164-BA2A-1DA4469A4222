@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include "romanError.h"
 #include "convert.h"
+#include <sys/stat.h>
 
-#test badInput
-	ck_assert(showMessage(convertSingleCharacterToInt('J'), NULL) == NULL);
+
+#test badRomanNumeralCharacter
+	ck_assert_msg(convertSingleCharacterToInt('J') == -1, "Conversion of non Roman Numeral to int test failed");

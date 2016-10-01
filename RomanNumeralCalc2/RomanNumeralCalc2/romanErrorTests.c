@@ -10,11 +10,13 @@
 #include <stdio.h>
 #include "romanError.h"
 #include "convert.h"
+#include <sys/stat.h>
 
-START_TEST(badInput)
+
+START_TEST(badRomanNumeralCharacter)
 {
-#line 7
-	ck_assert(showMessage(convertSingleCharacterToInt('J'), NULL) == NULL);
+#line 9
+	ck_assert_msg(convertSingleCharacterToInt('J') == -1, "Conversion of non Roman Numeral to int test failed");
 }
 END_TEST
 
@@ -26,7 +28,7 @@ int main(void)
     int nf;
 
     suite_add_tcase(s1, tc1_1);
-    tcase_add_test(tc1_1, badInput);
+    tcase_add_test(tc1_1, badRomanNumeralCharacter);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);

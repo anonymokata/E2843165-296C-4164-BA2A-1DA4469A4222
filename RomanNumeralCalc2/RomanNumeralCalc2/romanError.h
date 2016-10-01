@@ -8,6 +8,6 @@
 #ifndef ROMANERROR_H_
 #define ROMANERROR_H_
 
-char *showMessage(int messageType, char *value);
+void showBadCharMessage(char value);
 
 #endif /* ROMANERROR_H_ */

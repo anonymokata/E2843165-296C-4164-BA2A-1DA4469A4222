@@ -5,13 +5,15 @@
  *      Author: brad
  */
 #include <stdio.h>
+#include <errno.h>
+#include <string.h>
+#include <stdlib.h>
 #include "romanError.h"
 
-char *showMessage(int messageType, char *value)
+void showBadCharMessage(char value)
 {
-	char *messages[1];
-	messages[0] = "Character not recognized ";
-	printf("%s%s\n", messages[messageType], value);
-	return NULL;
+	printf("Invalid Roman Numeral char '%c'.\n", value);
 }
+
+
 
