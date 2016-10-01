@@ -9,5 +9,6 @@
 #define ROMANMATH_H_
 
 char *add(char *a, char *b);
+char *sub(char *a, char *b);
 
 #endif /* ROMANMATH_H_ */

@@ -21,19 +21,30 @@ int convertRomanNumeralStringToBaseTenInt(char* numeralString)
 	return total;
 }
 
-//lookAhead
+/*
+lookAhead refactor -
 
-//    (1st 3 rows)       OR  ((any V, L, or D) when the first letter (is equal to or larger))
-//(second / first >= 50) || ((first == 5 ||first == 50 || first == 500) && (second >= first))
+    ( I & X  )         OR  ((any V, L, or D) when the second value (is equal to or larger))
+(second / first >= 50) || ((first == 5 ||first == 50 || first == 500) && (second >= first))
 
-//if it isn't evident, I glommed onto Maurice Karnaugh's mapping idea
-//and used a positive, graphical solution. This is the "product of sums" of
-//bad numeral pairs.
-//IE, if you put the first numeral in rows and the second numeral in columns, then
-//map what doesn't work, you get patterns that are easy to spot. Instead of making
-//char comparisons I elected to just use their integer conversions.
-//this might be refactor-able still but I was pleased enough with a one line statement
-//of logical comparisons
+if it isn't evident, I glommed onto Maurice Karnaugh's mapping idea
+and used a positive, graphical solution. This is the "sum of products" of
+bad numeral pairs.
+IE, if you put the first numeral in rows and the second numeral in columns, then
+map what doesn't work, you get patterns that are easy to spot. Instead of making
+char comparisons I elected to use their integer conversions.
+this might be refactor-able still but I was pleased enough with a one line statement
+of logical comparisons
+
+     |I|V|X|L|C|D|M   2nd
+1st I| | | |*|*|*|*
+    V| |*|*|*|*|*|*
+    X| | | | | |*|*
+    L| | | |*|*|*|*
+    C| | | | | | |
+    D| | | | | |*|*
+    M| | | | | | |
+*/
 
 int lookAhead(char currentChar, char nextChar, int *index)
 {
@@ -45,9 +56,9 @@ int lookAhead(char currentChar, char nextChar, int *index)
 			return 0;
 		if (((5 * first) == second) || ((10 * first) == second))//same thing for subtraction.
 		{								//this only works because I have the rejection statement first.
-			*index += 1;
-			return (second - first);
-		}
+			*index += 1;				//if the string was larger and I expected more good input than bad
+			return (second - first);   //I would probably do the opposite and put this first, then alter the
+		}                              //bad input filter to not overlap rejection
 	}
 	return first;//you could get "more efficient" and write an addition statement for all known addition pairs,
 	             //but everything I wrote was still three bracketed comparisons and these strings are short,

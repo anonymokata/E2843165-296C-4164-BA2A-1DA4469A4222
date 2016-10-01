@@ -12,7 +12,12 @@ char *add(char *a, char *b)
 {
 	int termA = convertRomanNumeralStringToBaseTenInt(a);
 	int termB = convertRomanNumeralStringToBaseTenInt(b);
-	printf("%s\n", convertIntToRomanNumeralString(termA + termB));
 	return convertIntToRomanNumeralString(termA + termB);
 }
 
+char *sub(char *a, char *b)
+{
+	int termA = convertRomanNumeralStringToBaseTenInt(a);
+	int termB = convertRomanNumeralStringToBaseTenInt(b);
+	return convertIntToRomanNumeralString(termA - termB);
+}
