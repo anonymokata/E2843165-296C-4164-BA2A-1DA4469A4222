@@ -10,14 +10,20 @@
 #include <stdlib.h>
 #include "romanError.h"
 
-void showCharMessage(char value)
+void showBadCharMessage(char value)
 {
-	printf("Invalid Roman Numeral char '%c'.\n", value);
+	printf("Invalid Roman Numeral char '%c'.", value);
+	fflush(stdout);
 }
 
-void showBadNumeralPair(char a, char b)
+void showBadNumeralPairMessage(char a, char b)
 {
-	printf("Invalid Roman numeral pair '%c%c'.\n", a, b);
+	printf("Invalid Roman numeral pair '%c%c' ", a, b);
+	fflush(stdout);
 }
 
+void showBadNumeralStringMessage(char* value)
+{
+	printf("in the string '%s'.\n", value);
+}
 

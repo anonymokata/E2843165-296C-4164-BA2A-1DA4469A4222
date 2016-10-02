@@ -8,7 +8,7 @@
 #ifndef ROMANERROR_H_
 #define ROMANERROR_H_
 
-void showCharMessage(char value);
-void showBadNumeralPair(char a, char b);
+void showBadCharMessage(char value);
+void showBadNumeralPairMessage(char a, char b);
 
 #endif /* ROMANERROR_H_ */

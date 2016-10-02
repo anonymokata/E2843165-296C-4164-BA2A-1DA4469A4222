@@ -31,9 +31,9 @@ void restoreConsole()
 {
 	dup2(stdout_copy, 1);
 	close(stdout_copy);
+
 }
 //*************************************************************************************************************
-
 
 START_TEST(convertFromRomanNumeralToBaseTenTest)
 {
@@ -144,63 +144,36 @@ START_TEST(badConversionToBaseTen)
 #line 100
 	ck_assert_msg(convertRomanNumeralStringToBaseTenInt("MC%") == 0, "convertRomanNumeralStringToBaseTen fails to catch bad input MC%");
 
+
 }
 END_TEST
 
 START_TEST(romanErrorMessageTest)
 {
-#line 103
-	/*
+#line 104
+
+	lookAhead('I', 'M', 0);
 	getConsoleText(); //start looking for console text
 	convertSingleCharacterToInt('J');//when given bad input, this function outputs message1 to the console
 	char *message1 = "Invalid Roman Numeral char 'J'.";
 	ck_assert_msg(strncmp(consoleText, message1, strlen(message1)) == 0,"fails to display message when bad character given");
 	restoreConsole();
-	*/
 	
-	getConsoleText();
-	int index = 0;
-	lookAhead('I', 'M', &index);
-	char *message2 = "Invalid Roman numeral pair 'IM'.";
-	ck_assert_msg(strncmp(consoleText, message2, strlen(message2)) == 0,"fails to display message when bad numeral string given");
+	//getConsoleText();
+	printf("wt_heck?\n"); 
+	
+	/*
+	lookAhead('I', 'M', 0);
+	char *message2 = "Invalid Roman numeral pair 'IM' ";
+	ck_assert_msg(strncmp(consoleText, message2, strlen(message2)) == 0,"fails to display message when bad character given");
 	restoreConsole();
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	getConsoleText(); 
+	convertRomanNumeralStringToBaseTenInt("MMLD");
+	char *message3 = strcat(message2, "in the string 'MMLD'.");
+	ck_assert_msg(strncmp(consoleText, message3, strlen(message3)) == 0,"fails to display message when bad character given");
+	restoreConsole();
+	*/
 	
 	
 }

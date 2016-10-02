@@ -59,7 +59,7 @@ int lookAhead(char currentChar, char nextChar, int *index)
 			return -1;
 		if ((second / first >= 50) || ((first == 5 || first == 50 || first == 500) && (second >= first)))
 			{
-				showBadNumeralPair(currentChar, nextChar);
+				showBadNumeralPairMessage(currentChar, nextChar);
 				return -2;
 			}
 		if (((5 * first) == second) || ((10 * first) == second))//same thing for subtraction.
@@ -92,7 +92,7 @@ int convertSingleCharacterToInt(char numeral)
 		case 'M' :
 			return 1000;
 	}
-	showCharMessage(numeral);
+	showBadCharMessage(numeral);
 	return -1;
 }
 
