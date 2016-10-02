@@ -12,8 +12,12 @@
 
 void showCharMessage(char value)
 {
-	printf("Invalid Roman Numeral char '%c'.", value);
+	printf("Invalid Roman Numeral char '%c'.\n", value);
 }
 
+void showBadNumeralPair(char a, char b)
+{
+	printf("Invalid Roman numeral pair '%c%c'.\n", a, b);
+}
 
 

@@ -17,14 +17,9 @@ int convertRomanNumeralStringToBaseTenInt(char* numeralString)
 	for (int i = 0; i < strlen(numeralString); i++)
 	{
 		check = lookAhead(numeralString[i], numeralString[i+1], &i);
-		if (check < 0)
-			return 0;
 		total += check;
-		if (total > 3999)
-			{
-				//show message here when we write the test
-				return 0;
-			}
+		if (total > 3999 || check < 0)
+			return 0;
 	}
 	return total;
 }
@@ -62,8 +57,11 @@ int lookAhead(char currentChar, char nextChar, int *index)
 		int second = convertSingleCharacterToInt(nextChar);
 		if (first == -1 || second == -1)
 			return -1;
-		if ((second / first >= 50) || ((first == 5 ||first == 50 || first == 500) && (second >= first)))
-			return -2;
+		if ((second / first >= 50) || ((first == 5 || first == 50 || first == 500) && (second >= first)))
+			{
+				showBadNumeralPair(currentChar, nextChar);
+				return -2;
+			}
 		if (((5 * first) == second) || ((10 * first) == second))//same thing for subtraction.
 		{								//this only works because I have the rejection statement first.
 			*index += 1;				//if the string was larger and I expected more good input than bad

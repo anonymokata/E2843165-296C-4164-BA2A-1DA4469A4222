@@ -9,5 +9,6 @@
 #define ROMANERROR_H_
 
 void showCharMessage(char value);
+void showBadNumeralPair(char a, char b);
 
 #endif /* ROMANERROR_H_ */
