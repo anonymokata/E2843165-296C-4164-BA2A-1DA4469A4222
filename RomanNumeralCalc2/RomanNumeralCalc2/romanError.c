@@ -10,9 +10,10 @@
 #include <stdlib.h>
 #include "romanError.h"
 
-void showBadCharMessage(char value)
+char *showCharMessage(char value)
 {
-	printf("Invalid Roman Numeral char '%c'.\n", value);
+	return "Character 'J' is not a recognized Roman Numeral";
+	//printf("Invalid Roman Numeral char '%c'.\n", value);
 }
 
 

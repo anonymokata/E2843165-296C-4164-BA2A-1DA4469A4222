@@ -94,6 +94,7 @@ int convertSingleCharacterToInt(char numeral)
 		case 'M' :
 			return 1000;
 	}
+	showCharMessage(numeral);
 	return -1;
 }
 
@@ -162,3 +163,4 @@ char* convertIntToRomanNumeralString(int number)
 	}
 	return numeralString;
 }
+
