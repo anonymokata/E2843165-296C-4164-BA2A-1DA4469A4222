@@ -105,24 +105,26 @@ START_TEST(additionCheck)
 	ck_assert_msg(strcmp(add("IV", "V"), "IX") == 0, "Failed to add IV + V");
 	ck_assert_msg(strcmp(add("MMMCMXCVIII", "I"), "MMMCMXCIX") == 0, "Failed to add MMMCMXCVIII + I");
 	ck_assert_msg(strcmp(add("MMMDCCCLXXXVIII", "II"), "MMMDCCCXC") == 0, "Failed to add MMMDCCCLXXXVIII + II");
-	fail_unless(add("MMM", "M") == NULL,"Failed to recognize sum larger than allowable maximum");
+	fail_unless(add("MMM", "M") == NULL,"Add func failed to recognize sum larger than allowable maximum");
+	fail_unless(add("X", "NULL") == NULL,"Add func failed to recognize NULL value");
 	
 }
 END_TEST
 
 START_TEST(subtractionCheck)
 {
-#line 86
+#line 87
 	ck_assert_msg(strcmp(sub("V", "I"), "IV") == 0,"Failed to subtract V - I");
 	ck_assert_msg(strcmp(sub("DCLIX", "XCIX"), "DLX") == 0,"Failed to subtract DCLIX - XCIX");
-	fail_unless(sub("C", "MM") == NULL,"Failed to recognize negative value");
+	fail_unless(sub("C", "MM") == NULL,"Sub func failed to recognize negative value");
+	fail_unless(sub(NULL, "MM") == NULL,"Sub func failed to recognize NULL value");
 
 }
 END_TEST
 
 START_TEST(addAndSubReturnNullForBadSingleTerm)
 {
-#line 91
+#line 93
 	fail_unless(sub("*", "I") == NULL,"Failed to recognize bad A term");
 	fail_unless(add("I", "VD") == NULL,"Failed to recognize bad B term");
 //******************************************************************************************************************************
@@ -133,7 +135,7 @@ END_TEST
 
 START_TEST(badRomanNumeralCharacter)
 {
-#line 97
+#line 99
 	writeToConsoleTextFile();
 	ck_assert_int_eq(convertSingleCharacterToInt('J'), -1);
 	char *message = "Invalid Roman Numeral char 'J'";
@@ -144,7 +146,7 @@ END_TEST
 
 START_TEST(badlookAheadPairs)
 {
-#line 103
+#line 105
 	writeToConsoleTextFile();
 	fail_unless(lookAhead('I', 'C', 0) == -2, "Conversion of non Roman Numeral to int test failed (lookAhead)");
 	char *message1 = "Invalid Roman numeral pair 'IC'";
@@ -155,7 +157,7 @@ END_TEST
 
 START_TEST(badConversionToBaseTen)
 {
-#line 109
+#line 111
 	writeToConsoleTextFile();
 	ck_assert_msg(convertRomanNumeralStringToBaseTenInt("MIM") == 0, "convertRomanNumeralStringToBaseTen fails to catch bad input MC%");
 	char *message2 = "Invalid Roman numeral pair 'IM' in the string 'MIM'.";
@@ -166,13 +168,19 @@ END_TEST
 
 START_TEST(termExceeds3999MessageTest)
 {
-#line 115
+#line 117
 	writeToConsoleTextFile();
 	convertRomanNumeralStringToBaseTenInt("MMMCMXCIXI");
 	char *message3 = "Numeral string 'MMMCMXCIXI' exceeds maximum allowable value of 3999.";
 	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message3, strlen(message3)) == 0,"Failed to show exceeeds 3999 message");
 	
+}
+END_TEST
 
+START_TEST(nullStringPassedAsArg)
+{
+#line 123
+	
 	
 
 	
@@ -199,6 +207,7 @@ int main(void)
     tcase_add_test(tc1_1, badlookAheadPairs);
     tcase_add_test(tc1_1, badConversionToBaseTen);
     tcase_add_test(tc1_1, termExceeds3999MessageTest);
+    tcase_add_test(tc1_1, nullStringPassedAsArg);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);
