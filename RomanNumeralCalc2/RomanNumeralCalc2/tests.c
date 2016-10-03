@@ -115,6 +115,7 @@ START_TEST(subtractionCheck)
 #line 86
 	ck_assert_msg(strcmp(sub("V", "I"), "IV") == 0,"Failed to subtract V - I");
 	ck_assert_msg(strcmp(sub("DCLIX", "XCIX"), "DLX") == 0,"Failed to subtract DCLIX - XCIX");
+	fail_unless(sub("C", "MM") == NULL,"Failed to recognize negative value");
 
 //******************************************************************************************************************************
 //Errors
@@ -124,7 +125,7 @@ END_TEST
 
 START_TEST(badRomanNumeralCharacter)
 {
-#line 93
+#line 94
 	writeToConsoleTextFile();
 	ck_assert_int_eq(convertSingleCharacterToInt('J'), -1);
 	char *message = "Invalid Roman Numeral char 'J'";
@@ -135,7 +136,7 @@ END_TEST
 
 START_TEST(badlookAheadPairs)
 {
-#line 99
+#line 100
 	writeToConsoleTextFile();
 	fail_unless(lookAhead('I', 'C', 0) == -2, "Conversion of non Roman Numeral to int test failed (lookAhead)");
 	char *message1 = "Invalid Roman numeral pair 'IC'";
@@ -146,7 +147,7 @@ END_TEST
 
 START_TEST(badConversionToBaseTen)
 {
-#line 105
+#line 106
 	writeToConsoleTextFile();
 	ck_assert_msg(convertRomanNumeralStringToBaseTenInt("MIM") == 0, "convertRomanNumeralStringToBaseTen fails to catch bad input MC%");
 	char *message2 = "Invalid Roman numeral pair 'IM' in the string 'MIM'.";
@@ -157,7 +158,7 @@ END_TEST
 
 START_TEST(termExceeds3999MessageTest)
 {
-#line 111
+#line 112
 	writeToConsoleTextFile();
 	convertRomanNumeralStringToBaseTenInt("MMMCMXCIXI");
 	char *message3 = "Numeral string 'MMMCMXCIXI' exceeds maximum allowable value of 3999.";

@@ -22,5 +22,8 @@ char *sub(char *a, char *b)
 {
 	int termA = convertRomanNumeralStringToBaseTenInt(a);
 	int termB = convertRomanNumeralStringToBaseTenInt(b);
-	return convertIntToRomanNumeralString(termA - termB);
+	int diff = termA - termB;
+	if (diff > 0)
+		return convertIntToRomanNumeralString(termA - termB);
+	return NULL;
 }
