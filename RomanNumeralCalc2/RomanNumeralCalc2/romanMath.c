@@ -10,9 +10,7 @@
 
 char *add(char *a, char *b)
 {
-	int termA = convertRomanNumeralStringToBaseTenInt(a);
-	int termB = convertRomanNumeralStringToBaseTenInt(b);
-	int sum = termA + termB;
+	int sum = convertRomanNumeralStringToBaseTenInt(a) + convertRomanNumeralStringToBaseTenInt(b);
 	if (sum < 4000)
 		return convertIntToRomanNumeralString(sum);
 	return NULL;
@@ -20,10 +18,8 @@ char *add(char *a, char *b)
 
 char *sub(char *a, char *b)
 {
-	int termA = convertRomanNumeralStringToBaseTenInt(a);
-	int termB = convertRomanNumeralStringToBaseTenInt(b);
-	int diff = termA - termB;
+	int diff = convertRomanNumeralStringToBaseTenInt(a) - convertRomanNumeralStringToBaseTenInt(b);
 	if (diff > 0)
-		return convertIntToRomanNumeralString(termA - termB);
+		return convertIntToRomanNumeralString(diff);
 	return NULL;
 }
