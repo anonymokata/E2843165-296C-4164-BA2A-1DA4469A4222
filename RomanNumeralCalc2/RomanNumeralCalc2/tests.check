@@ -120,7 +120,16 @@ char *getStdoutTextWrittenToFile()
 	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message3, strlen(message3)) == 0,"Failed to show exceeeds 3999 message");
 	
 #test nullStringPassedAsArg
+	writeToConsoleTextFile();
+	sub(NULL, "MM");
+	char *message4 = "Error. Term A null.";
+	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message4, strlen(message4)) == 0,"Sub func failed to show null arg message");
 	
+#test nullStringPassedAsArg
+	writeToConsoleTextFile();
+	add("CC", NULL);
+	char *message5 = "Error. Term B null.";
+	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message5, strlen(message5)) == 0,"Add func failed to show null arg message");
 	
 
 	
