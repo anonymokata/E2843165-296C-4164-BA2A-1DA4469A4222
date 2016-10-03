@@ -30,6 +30,7 @@ char *sub(char *a, char *b)
 	int diff = termA - termB;
 	if (diff > 0)
 		return convertIntToRomanNumeralString(diff);
+	showNonValidSubtractionResult();
 	return NULL;
 }
 

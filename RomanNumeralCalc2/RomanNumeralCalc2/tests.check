@@ -88,6 +88,7 @@ char *getStdoutTextWrittenToFile()
 	ck_assert_msg(strcmp(sub("DCLIX", "XCIX"), "DLX") == 0,"Failed to subtract DCLIX - XCIX");
 	fail_unless(sub("C", "MM") == NULL,"Sub func failed to recognize negative value");
 	fail_unless(sub(NULL, "MM") == NULL,"Sub func failed to recognize NULL value");
+	fail_unless(sub("CCC", "CCC") == NULL,"Sub func failed to recognize zero");
 
 #test addAndSubReturnNullForBadSingleTerm
 	fail_unless(sub("*", "I") == NULL,"Failed to recognize bad A term");
@@ -131,9 +132,9 @@ char *getStdoutTextWrittenToFile()
 	char *message5 = "Error. Term B null.";
 	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message5, strlen(message5)) == 0,"Add func failed to show null arg message");
 
-#test subtractionResultsInNonValidRomanNumeral
+#test subtractionYieldsNonValidRomanNumeral
 	writeToConsoleTextFile();
-	sub("CC", "D");
-	char *message6 = "Error. Subtraction results are not a valid Roman numeral.";
-	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message6, strlen(message6)) == 0,"Add func failed to show null arg message");
+	sub("CC", "MD");
+	char *message6 = "Error. Subtraction results are not a valid Roman numeral (negative or zero).";
+	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message6, strlen(message6)) == 0,"Sub func failed to show invalid result message");
 	

@@ -1,3 +1,2 @@
-Error. Term B null.
-MXCIXI' exceeds maximum allowable value of 3999.
-in the string 'MMMCMXCIXI'.
+Error. Subtraction results are not a valid Roman numeral (negative or zero).
+tring 'MMMCMXCIXI'.

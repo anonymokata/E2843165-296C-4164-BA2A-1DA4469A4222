@@ -36,3 +36,8 @@ void showTermNullMessage(char term)
 {
 	printf("Error. Term %c null.\n", term);
 }
+
+void showNonValidSubtractionResult()
+{
+	printf("Error. Subtraction results are not a valid Roman numeral (negative or zero).\n");
+}
