@@ -109,7 +109,7 @@ char *getStdoutTextWrittenToFile()
 #test exceeds3999MessageTest
 	writeToConsoleTextFile();
 	convertRomanNumeralStringToBaseTenInt("MMMCMXCIXI");
-	char *message3 = "Numeral string 'MMMCMXCIXI' exceeds maximum allowable value of 3999";
+	char *message3 = "Numeral string 'MMMCMXCIXI' exceeds maximum allowable value of 3999.";
 	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message3, strlen(message3)) == 0,"Failed to show exceeeds 3999 message");
 	
 	

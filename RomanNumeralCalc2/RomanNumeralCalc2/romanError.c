@@ -27,3 +27,7 @@ void showBadNumeralStringMessage(char* value)
 	printf("in the string '%s'.\n", value);
 }
 
+void showExceededMaximumValueMessage(char *value)
+{
+	printf("Numeral string '%s' exceeds maximum allowable value of 3999.\n", value);
+}

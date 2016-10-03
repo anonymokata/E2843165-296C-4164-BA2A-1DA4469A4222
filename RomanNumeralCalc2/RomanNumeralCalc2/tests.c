@@ -127,7 +127,7 @@ START_TEST(badRomanNumeralCharacter)
 	writeToConsoleTextFile();
 	ck_assert_int_eq(convertSingleCharacterToInt('J'), -1);
 	char *message = "Invalid Roman Numeral char 'J'";
-	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message, strlen(message)) == 0,"Failed to add V + I");
+	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message, strlen(message)) == 0,"Failed to show bad character message");
 	
 }
 END_TEST
@@ -138,7 +138,7 @@ START_TEST(badlookAheadPairs)
 	writeToConsoleTextFile();
 	fail_unless(lookAhead('I', 'C', 0) == -2, "Conversion of non Roman Numeral to int test failed (lookAhead)");
 	char *message1 = "Invalid Roman numeral pair 'IC'";
-	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message1, strlen(message1)) == 0,"Failed to add V + I");
+	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message1, strlen(message1)) == 0,"Failed to show bad pair message");
 	
 }
 END_TEST
@@ -149,8 +149,18 @@ START_TEST(badConversionToBaseTen)
 	writeToConsoleTextFile();
 	ck_assert_msg(convertRomanNumeralStringToBaseTenInt("MIM") == 0, "convertRomanNumeralStringToBaseTen fails to catch bad input MC%");
 	char *message2 = "Invalid Roman numeral pair 'IM' in the string 'MIM'.";
-	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message2, strlen(message2)) == 0,"Failed to add V + I");
+	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message2, strlen(message2)) == 0,"Failed to show bad conversion messages");
 	
+}
+END_TEST
+
+START_TEST(exceeds3999MessageTest)
+{
+#line 110
+	writeToConsoleTextFile();
+	convertRomanNumeralStringToBaseTenInt("MMMCMXCIXI");
+	char *message3 = "Numeral string 'MMMCMXCIXI' exceeds maximum allowable value of 3999.";
+	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message3, strlen(message3)) == 0,"Failed to show exceeeds 3999 message");
 	
 	
 }
@@ -172,6 +182,7 @@ int main(void)
     tcase_add_test(tc1_1, badRomanNumeralCharacter);
     tcase_add_test(tc1_1, badlookAheadPairs);
     tcase_add_test(tc1_1, badConversionToBaseTen);
+    tcase_add_test(tc1_1, exceeds3999MessageTest);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);
