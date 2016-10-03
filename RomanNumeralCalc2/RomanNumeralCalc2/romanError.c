@@ -12,7 +12,7 @@
 
 void showBadCharMessage(char value)
 {
-	printf("Invalid Roman Numeral char '%c'.", value);
+	printf("Invalid Roman Numeral char '%c' ", value);
 	fflush(stdout);
 }
 

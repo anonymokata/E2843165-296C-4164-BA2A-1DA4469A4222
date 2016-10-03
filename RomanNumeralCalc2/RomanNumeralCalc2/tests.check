@@ -2,29 +2,30 @@
 #include "romanMath.h"
 #include "romanError.h"
 #include <stdio.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <unistd.h>
+#include <stdlib.h>
 
+int consoleTextDescr;
+int stdout_copy;
 
-char consoleText[100] = {0};
-int stdout_copy = 0;
-//*************************************************************************************************************
-//these functions are used to aid the romanErrorTests calls
-//call this function before displaying the error message to write the text to the consoleText char array
-void getConsoleText()
-{	
-	stdout_copy = dup(STDOUT_FILENO);//use dup and dup2 to restore stdout once we are finished reading from it
-	memset(consoleText, 0, sizeof(consoleText));//reset the global buffer so we can use it for other tests
-	close(1);
-	stdout = fmemopen(consoleText, sizeof(consoleText), "w");
-	setbuf(stdout, NULL);
-}
-
-void restoreConsole()
+void writeToConsoleTextFile()
 {
-	dup2(stdout_copy, 1);
-	close(stdout_copy);
-
+	consoleTextDescr = open("consoleText.txt", O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+	dup2(consoleTextDescr, 1);
+	close(consoleTextDescr);	
 }
+char *getStdoutTextWrittenToFile()
+{
+	
+	consoleTextDescr = open("consoleText.txt", O_RDONLY);
+	char *text = malloc (sizeof(char) * 255);
+	read(consoleTextDescr, text, 255);
+	return text;
+}
+
 //*************************************************************************************************************
 
 #test convertFromRomanNumeralToBaseTenTest
@@ -89,34 +90,15 @@ void restoreConsole()
 //Errors
 
 #test badRomanNumeralCharacter
+	writeToConsoleTextFile();
 	ck_assert_int_eq(convertSingleCharacterToInt('J'), -1);//, "Conversion of non Roman Numeral to int test failed");
-	//now test for lookAhead since it uses the character conversion
+	char *message = "Invalid Roman Numeral char 'J'";
+	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message, strlen(message)) == 0,"Failed to add V + I");
 	
 #test badlookAheadPairs
-	int index = 0;
-	fail_unless(lookAhead('I', 'C', &index) == -2, "Conversion of non Roman Numeral to int test failed (lookAhead)");
+	fail_unless(lookAhead('I', 'C', 0) == -2, "Conversion of non Roman Numeral to int test failed (lookAhead)");
 	
 #test badConversionToBaseTen
 	ck_assert_msg(convertRomanNumeralStringToBaseTenInt("MC%") == 0, "convertRomanNumeralStringToBaseTen fails to catch bad input MC%");
-
-
-#test romanErrorMessageTest
-	
-	/*
-	getConsoleText(); //start looking for console text
-	convertSingleCharacterToInt('J');//when given bad input, this function outputs message1 to the console
-	char *message1 = "Invalid Roman Numeral char 'J'.";
-	ck_assert_msg(strncmp(consoleText, message1, strlen(message1)) == 0,"fails to display message when bad character given");
-	restoreConsole();
-	*/
-	
-	getConsoleText(); 
-	lookAhead('I', 'M', 0);
-	char *message2 = "Invalid Roman numeral pair 'IM'";
-	convertRomanNumeralStringToBaseTenInt("MMLD");
-	char *message3 = strcat(message2, "in the string 'MMLD'.");
-	ck_assert_msg(strncmp(consoleText, message3, strlen(message3)) == 0,"fails to display message when bad character given");
-	restoreConsole();
-
 	
 	

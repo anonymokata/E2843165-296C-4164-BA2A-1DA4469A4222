@@ -19,7 +19,10 @@ int convertRomanNumeralStringToBaseTenInt(char* numeralString)
 		check = lookAhead(numeralString[i], numeralString[i+1], &i);
 		total += check;
 		if (total > 3999 || check < 0)
+		{
+			showBadNumeralStringMessage(numeralString);
 			return 0;
+		}
 	}
 	return total;
 }
