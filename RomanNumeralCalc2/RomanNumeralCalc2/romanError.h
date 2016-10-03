@@ -12,5 +12,6 @@ void showBadCharMessage(char value);
 void showBadNumeralPairMessage(char a, char b);
 void showBadNumeralStringMessage(char* value);
 void showTermExceedsMaximumValueMessage(char* value);
+void showTermNullMessage(char term);
 
 #endif /* ROMANERROR_H_ */

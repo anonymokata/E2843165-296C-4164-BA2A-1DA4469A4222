@@ -173,14 +173,28 @@ START_TEST(termExceeds3999MessageTest)
 	convertRomanNumeralStringToBaseTenInt("MMMCMXCIXI");
 	char *message3 = "Numeral string 'MMMCMXCIXI' exceeds maximum allowable value of 3999.";
 	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message3, strlen(message3)) == 0,"Failed to show exceeeds 3999 message");
+
+}
+END_TEST
+
+START_TEST(nullStringPassedAsArgSub)
+{
+#line 123
+	writeToConsoleTextFile();
+	sub(NULL, "MM");
+	char *message4 = "Error. Term A null.";
+	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message4, strlen(message4)) == 0,"Sub func failed to show null arg message");
 	
 }
 END_TEST
 
-START_TEST(nullStringPassedAsArg)
+START_TEST(nullStringPassedAsArgAdd)
 {
-#line 123
-	
+#line 129
+	writeToConsoleTextFile();
+	add("CC", NULL);
+	char *message5 = "Error. Term B null.";
+	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message5, strlen(message5)) == 0,"Add func failed to show null arg message");
 	
 
 	
@@ -207,7 +221,8 @@ int main(void)
     tcase_add_test(tc1_1, badlookAheadPairs);
     tcase_add_test(tc1_1, badConversionToBaseTen);
     tcase_add_test(tc1_1, termExceeds3999MessageTest);
-    tcase_add_test(tc1_1, nullStringPassedAsArg);
+    tcase_add_test(tc1_1, nullStringPassedAsArgSub);
+    tcase_add_test(tc1_1, nullStringPassedAsArgAdd);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);

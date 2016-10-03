@@ -7,9 +7,20 @@
 #include <stdio.h>
 #include "convert.h"
 #include "romanMath.h"
+#include "romanError.h"
 
 char *add(char *a, char *b)
 {
+	if (a == NULL)
+	{
+		showTermNullMessage('A');
+		return NULL;
+	}
+	if (b == NULL)
+	{
+		showTermNullMessage('B');
+		return NULL;
+	}
 	int termA = convertRomanNumeralStringToBaseTenInt(a);
 	int termB = convertRomanNumeralStringToBaseTenInt(b);
 	if (termA == 0 || termB ==0)
@@ -22,6 +33,16 @@ char *add(char *a, char *b)
 
 char *sub(char *a, char *b)
 {
+	if (a == NULL)
+		{
+			showTermNullMessage('A');
+			return NULL;
+		}
+	if (b == NULL)
+	{
+		showTermNullMessage('B');
+		return NULL;
+	}
 	int termA = convertRomanNumeralStringToBaseTenInt(a);
 	int termB = convertRomanNumeralStringToBaseTenInt(b);
 	if (termA == 0 || termB ==0)

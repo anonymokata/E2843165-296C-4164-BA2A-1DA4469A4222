@@ -1,2 +1,3 @@
-Numeral string 'MMMCMXCIXI' exceeds maximum allowable value of 3999.
+Error. Term B null.
+MXCIXI' exceeds maximum allowable value of 3999.
 in the string 'MMMCMXCIXI'.
