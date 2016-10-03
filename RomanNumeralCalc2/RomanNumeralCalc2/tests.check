@@ -87,6 +87,9 @@ char *getStdoutTextWrittenToFile()
 	ck_assert_msg(strcmp(sub("DCLIX", "XCIX"), "DLX") == 0,"Failed to subtract DCLIX - XCIX");
 	fail_unless(sub("C", "MM") == NULL,"Failed to recognize negative value");
 
+#test addAndSubReturnNullForBadSingleTerm
+	fail_unless(sub("*", "I") == NULL,"Failed to recognize bad A term");
+	fail_unless(add("I", "VD") == NULL,"Failed to recognize bad B term");
 //******************************************************************************************************************************
 //Errors
 
@@ -113,6 +116,8 @@ char *getStdoutTextWrittenToFile()
 	convertRomanNumeralStringToBaseTenInt("MMMCMXCIXI");
 	char *message3 = "Numeral string 'MMMCMXCIXI' exceeds maximum allowable value of 3999.";
 	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message3, strlen(message3)) == 0,"Failed to show exceeeds 3999 message");
+	
+
 	
 
 	
