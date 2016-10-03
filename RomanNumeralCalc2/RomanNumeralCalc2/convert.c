@@ -10,18 +10,18 @@
 #include "convert.h"
 #include "romanError.h"
 
-char* numeralString = NULL;
+char* globalNumeralString = NULL;
 
 int convertRomanNumeralStringToBaseTenInt(char* _numeralString)
 {
-	numeralString = _numeralString;
+	globalNumeralString = _numeralString;
 	int total = 0;
 	int i = 0;
 	do
 	{
-		total = checkValue(lookAhead(numeralString[i], numeralString[i+1], &i), total);
+		total = checkValue(lookAhead(globalNumeralString[i], globalNumeralString[i+1], &i), total);
 		i++;
-	}while((i < strlen(numeralString)) && (total > 0));
+	}while((i < strlen(globalNumeralString)) && (total > 0));
 	return total;
 }
 
@@ -29,13 +29,13 @@ int checkValue(int lookAheadResult, int currentTotal)
 {
 	if (lookAheadResult  < 0)
 	{
-		showBadNumeralStringMessage(numeralString);
+		showBadNumeralStringMessage(globalNumeralString);
 		return 0;
 	}
 	int newTotal = currentTotal + lookAheadResult;
 	if (newTotal < 4000)
 		return newTotal;
-	showTermExceedsMaximumValueMessage(numeralString);
+	showTermExceedsMaximumValueMessage(globalNumeralString);
 	return 0;
 }
 /*
@@ -112,66 +112,26 @@ int convertSingleCharacterToInt(char numeral)
 
 char* convertIntToRomanNumeralString(int number)
 {
+	_Bool show = 0;
+	if (number == 1)
+		show = 1;
+	char *baseNumerals[14]={"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+	int value[13]={1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
 	char *numeralString = malloc (sizeof(char) * 16);
 	numeralString[0] = 0;
-	while (number >= 1000)
+	int i = 0;
+	while(number > 0)
 	{
-		number -= 1000;
-		strcat(numeralString, "M");
-	}
-	if(number >= 900)
-	{
-		number -= 900;
-		strcat(numeralString, "CM");
-	}
-	if (number >= 500)
-	{
-		number -= 500;
-		strcat(numeralString, "D");
-	}
-	if (number >= 400)
-	{
-		number -= 400;
-		strcat(numeralString, "CD");
-	}
-	while (number >= 100)
-	{
-		number -= 100;
-		strcat(numeralString, "C");
-	}
-	if (number >= 90)
-	{
-		number -= 90;
-		strcat(numeralString, "XC");
-	}
-	if (number >= 50)
-	{
-		number -= 50;
-		strcat(numeralString, "L");
-	}
-	if (number >= 40)
-	{
-		number -= 40;
-		strcat(numeralString, "XL");
-	}
-	while (number >= 10)
-	{
-		number -= 10;
-		strcat(numeralString, "X");
-	}
-	if (number == 9)
-		return strcat(numeralString, "IX");
-	else if (number >= 5)
-		{
-			number -= 5;
-			strcat(numeralString, "V");
-		}
-	else if (number == 4)
-		return strcat(numeralString, "IV");
-	while(number >= 1)
-	{
-		number -= 1;
-		strcat(numeralString, "I");
+		while(number > value[i])
+			{
+				strcat(numeralString, baseNumerals[i]);
+				if(show)
+					printf("i = %d and val = %d. meanwhile, string is %s\n", i, number, numeralString);
+				number -= value[i];
+			}
+		if (number == value[i])
+			return strcat(numeralString, baseNumerals[i]);
+		i++;
 	}
 	return numeralString;
 }
