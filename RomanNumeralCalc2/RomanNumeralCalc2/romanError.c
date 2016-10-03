@@ -32,6 +32,11 @@ void showTermExceedsMaximumValueMessage(char *value)
 	printf("Numeral string '%s' exceeds maximum allowable value of 3999.\n", value);
 }
 
+void showSumExceedsMaximumValueMessage()
+{
+	printf("Error. Addition results in sum that exceeds maximum allowable value of 3999.\n");
+}
+
 void showTermNullMessage(char term)
 {
 	printf("Error. Term %c null.\n", term);

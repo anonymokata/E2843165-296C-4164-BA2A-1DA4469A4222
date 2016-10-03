@@ -129,7 +129,7 @@ char* convertIntToRomanNumeralString(int number)
 					printf("i = %d and val = %d. meanwhile, string is %s\n", i, number, numeralString);
 				number -= value[i];
 			}
-		if (number == value[i])
+		if (number == value[i])//save iterations
 			return strcat(numeralString, baseNumerals[i]);
 		i++;
 	}

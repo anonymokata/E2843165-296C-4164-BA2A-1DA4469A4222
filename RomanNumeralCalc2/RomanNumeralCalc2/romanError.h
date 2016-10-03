@@ -14,5 +14,6 @@ void showBadNumeralStringMessage(char* value);
 void showTermExceedsMaximumValueMessage(char* value);
 void showTermNullMessage(char term);
 void showNonValidSubtractionResult();
+void showSumExceedsMaximumValueMessage();
 
 #endif /* ROMANERROR_H_ */

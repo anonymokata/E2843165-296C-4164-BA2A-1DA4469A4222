@@ -12,13 +12,12 @@
 char *add(char *a, char *b)
 {
 	int termA, termB;
-	if (goodInput(a, b, &termA, &termB) == 0)
-		{
-			return NULL;
-		}
+	if (!goodInput(a, b, &termA, &termB))
+		return NULL;
 	int sum = termA + termB;
 	if (sum < 4000)
 		return convertIntToRomanNumeralString(sum);
+	showSumExceedsMaximumValueMessage();
 	return NULL;
 }
 
