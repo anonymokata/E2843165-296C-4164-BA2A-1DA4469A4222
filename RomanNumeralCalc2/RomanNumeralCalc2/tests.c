@@ -18,6 +18,9 @@
 
 int consoleTextDescr;
 int stdout_copy;
+//*************************************************************************************
+//these functions assist in the romanError tests by redirecting the console output to a text file
+//and then checking the desired result against the text file
 
 void writeToConsoleTextFile()
 {
@@ -37,7 +40,7 @@ char *getStdoutTextWrittenToFile()
 
 START_TEST(convertFromRomanNumeralToBaseTenTest)
 {
-#line 31
+#line 34
 	fail_unless(convertRomanNumeralStringToBaseTenInt("I") == 1,"Failed to convert I to 1");
 	fail_unless(convertRomanNumeralStringToBaseTenInt("V") == 5,"Failed to convert V to 5");
 	fail_unless(convertRomanNumeralStringToBaseTenInt("X") == 10,"Failed to convert X to 10");
@@ -70,7 +73,7 @@ END_TEST
 
 START_TEST(convertIntToRomanNumeralTest)
 {
-#line 59
+#line 62
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(1),  "I") == 0,"Failed to convert 1 to I");
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(1000),  "M") == 0,"Failed to convert 1000 to M");
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(1500),  "MD") == 0,"Failed to convert 1500 to MD");
@@ -89,7 +92,7 @@ END_TEST
 
 START_TEST(exceedsMaximum)
 {
-#line 73
+#line 76
 	fail_unless(convertRomanNumeralStringToBaseTenInt("MMMCMXCIXI") == 0,"Failed to rejct number larger than 3999");
 	
 //******************************************************************************************************************************
@@ -99,7 +102,7 @@ END_TEST
 
 START_TEST(additionCheck)
 {
-#line 78
+#line 81
 	ck_assert_msg(strcmp(add("V", "I"), "VI") == 0,"Failed to add V + I");
 	ck_assert_msg(strcmp(add("XXXII", "LXIV"), "XCVI") == 0, "Failed to add XXXII + LXIV"); 
 	ck_assert_msg(strcmp(add("IV", "V"), "IX") == 0, "Failed to add IV + V");
@@ -113,7 +116,7 @@ END_TEST
 
 START_TEST(subtractionCheck)
 {
-#line 87
+#line 90
 	ck_assert_msg(strcmp(sub("V", "I"), "IV") == 0,"Failed to subtract V - I");
 	ck_assert_msg(strcmp(sub("DCLIX", "XCIX"), "DLX") == 0,"Failed to subtract DCLIX - XCIX");
 	fail_unless(sub("C", "MM") == NULL,"Sub func failed to recognize negative value");
@@ -125,7 +128,7 @@ END_TEST
 
 START_TEST(addAndSubReturnNullForBadSingleTerm)
 {
-#line 94
+#line 97
 	fail_unless(sub("*", "I") == NULL,"Failed to recognize bad A term");
 	fail_unless(add("I", "VD") == NULL,"Failed to recognize bad B term");
 //******************************************************************************************************************************
@@ -136,7 +139,7 @@ END_TEST
 
 START_TEST(badRomanNumeralCharacter)
 {
-#line 100
+#line 103
 	writeToConsoleTextFile();
 	ck_assert_int_eq(convertSingleCharacterToInt('J'), -1);
 	char *message = "Invalid Roman Numeral char 'J'";
@@ -147,7 +150,7 @@ END_TEST
 
 START_TEST(badlookAheadPairs)
 {
-#line 106
+#line 109
 	writeToConsoleTextFile();
 	fail_unless(lookAhead('I', 'C', 0) == -2, "Conversion of non Roman Numeral to int test failed (lookAhead)");
 	char *message1 = "Invalid Roman numeral pair 'IC'";
@@ -158,7 +161,7 @@ END_TEST
 
 START_TEST(badConversionToBaseTen)
 {
-#line 112
+#line 115
 	writeToConsoleTextFile();
 	ck_assert_msg(convertRomanNumeralStringToBaseTenInt("MIM") == 0, "convertRomanNumeralStringToBaseTen fails to catch bad input MC%");
 	char *message2 = "Invalid Roman numeral pair 'IM' in the string 'MIM'.";
@@ -169,7 +172,7 @@ END_TEST
 
 START_TEST(termExceeds3999MessageTest)
 {
-#line 118
+#line 121
 	writeToConsoleTextFile();
 	convertRomanNumeralStringToBaseTenInt("MMMCMXCIXI");
 	char *message3 = "Numeral string 'MMMCMXCIXI' exceeds maximum allowable value of 3999.";
@@ -180,7 +183,7 @@ END_TEST
 
 START_TEST(nullStringPassedAsArgSub)
 {
-#line 124
+#line 127
 	writeToConsoleTextFile();
 	sub(NULL, "MM");
 	char *message4 = "Error. Term A null.";
@@ -191,7 +194,7 @@ END_TEST
 
 START_TEST(nullStringPassedAsArgAdd)
 {
-#line 130
+#line 133
 	writeToConsoleTextFile();
 	add("CC", NULL);
 	char *message5 = "Error. Term B null.";
@@ -202,7 +205,7 @@ END_TEST
 
 START_TEST(subtractionYieldsNonValidRomanNumeral)
 {
-#line 136
+#line 139
 	writeToConsoleTextFile();
 	sub("CC", "MD");
 	char *message6 = "Error. Subtraction results are not a valid Roman numeral (negative or zero).";

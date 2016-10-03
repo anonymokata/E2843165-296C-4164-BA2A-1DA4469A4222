@@ -10,26 +10,34 @@
 #include "convert.h"
 #include "romanError.h"
 
-int convertRomanNumeralStringToBaseTenInt(char* numeralString)
+char* numeralString = NULL;
+
+int convertRomanNumeralStringToBaseTenInt(char* _numeralString)
 {
+	numeralString = _numeralString;
 	int total = 0;
-	int check = 0;
-	for (int i = 0; i < strlen(numeralString); i++)
+	int i = 0;
+	do
 	{
-		check = lookAhead(numeralString[i], numeralString[i+1], &i);
-		total += check;
-		if (total > 3999 || check < 0)
-		{
-			if (total > 3999)
-				showTermExceedsMaximumValueMessage(numeralString);
-			else
-				showBadNumeralStringMessage(numeralString);
-			return 0;
-		}
-	}
+		total = checkValue(lookAhead(numeralString[i], numeralString[i+1], &i), total);
+		i++;
+	}while((i < strlen(numeralString)) && (total > 0));
 	return total;
 }
 
+int checkValue(int lookAheadResult, int currentTotal)
+{
+	if (lookAheadResult  < 0)
+	{
+		showBadNumeralStringMessage(numeralString);
+		return 0;
+	}
+	int newTotal = currentTotal + lookAheadResult;
+	if (newTotal < 4000)
+		return newTotal;
+	showTermExceedsMaximumValueMessage(numeralString);
+	return 0;
+}
 /*
 lookAhead refactor -
 

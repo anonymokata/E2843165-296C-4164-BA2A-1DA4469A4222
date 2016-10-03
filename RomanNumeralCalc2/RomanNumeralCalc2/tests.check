@@ -10,6 +10,9 @@
 
 int consoleTextDescr;
 int stdout_copy;
+//*************************************************************************************
+//these functions assist in the romanError tests by redirecting the console output to a text file
+//and then checking the desired result against the text file
 
 void writeToConsoleTextFile()
 {
