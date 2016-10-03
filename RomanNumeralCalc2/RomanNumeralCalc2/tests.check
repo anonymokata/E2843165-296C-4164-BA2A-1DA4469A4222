@@ -80,6 +80,7 @@ char *getStdoutTextWrittenToFile()
 	ck_assert_msg(strcmp(add("IV", "V"), "IX") == 0, "Failed to add IV + V");
 	ck_assert_msg(strcmp(add("MMMCMXCVIII", "I"), "MMMCMXCIX") == 0, "Failed to add MMMCMXCVIII + I");
 	ck_assert_msg(strcmp(add("MMMDCCCLXXXVIII", "II"), "MMMDCCCXC") == 0, "Failed to add MMMDCCCLXXXVIII + II");
+	fail_unless(add("MMM", "M") == NULL,"Failed to recognize sum larger than allowable maximum");
 	
 #test subtractionCheck
 	ck_assert_msg(strcmp(sub("V", "I"), "IV") == 0,"Failed to subtract V - I");
@@ -106,10 +107,13 @@ char *getStdoutTextWrittenToFile()
 	char *message2 = "Invalid Roman numeral pair 'IM' in the string 'MIM'.";
 	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message2, strlen(message2)) == 0,"Failed to show bad conversion messages");
 	
-#test exceeds3999MessageTest
+#test termExceeds3999MessageTest
 	writeToConsoleTextFile();
 	convertRomanNumeralStringToBaseTenInt("MMMCMXCIXI");
 	char *message3 = "Numeral string 'MMMCMXCIXI' exceeds maximum allowable value of 3999.";
 	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message3, strlen(message3)) == 0,"Failed to show exceeeds 3999 message");
+	
+
+	
 	
 	
