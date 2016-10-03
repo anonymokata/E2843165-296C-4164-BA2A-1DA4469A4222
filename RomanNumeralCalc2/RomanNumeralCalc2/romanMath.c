@@ -2,7 +2,7 @@
  * romanMath.c
  *
  *  Created on: Sep 29, 2016
- *      Author: brad
+ *      Author: Brad Rust
  */
 #include <stdio.h>
 #include "convert.h"
@@ -11,8 +11,7 @@
 
 char *add(char *a, char *b)
 {
-	int termA = 0;
-	int termB = 0;
+	int termA, termB;
 	if (goodInput(a, b, &termA, &termB) == 0)
 		{
 			return NULL;
@@ -25,8 +24,7 @@ char *add(char *a, char *b)
 
 char *sub(char *a, char *b)
 {
-	int termA = 0;
-	int termB = 0;
+	int termA, termB;
 	if (!goodInput(a, b, &termA, &termB))
 		return NULL;
 	int diff = termA - termB;

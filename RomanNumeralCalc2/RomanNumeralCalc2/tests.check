@@ -130,8 +130,10 @@ char *getStdoutTextWrittenToFile()
 	add("CC", NULL);
 	char *message5 = "Error. Term B null.";
 	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message5, strlen(message5)) == 0,"Add func failed to show null arg message");
-	
 
-	
-	
+#test subtractionResultsInNonValidRomanNumeral
+	writeToConsoleTextFile();
+	sub("CC", "D");
+	char *message6 = "Error. Subtraction results are not a valid Roman numeral.";
+	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message6, strlen(message6)) == 0,"Add func failed to show null arg message");
 	

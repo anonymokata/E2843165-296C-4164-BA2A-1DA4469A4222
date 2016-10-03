@@ -195,10 +195,17 @@ START_TEST(nullStringPassedAsArgAdd)
 	add("CC", NULL);
 	char *message5 = "Error. Term B null.";
 	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message5, strlen(message5)) == 0,"Add func failed to show null arg message");
-	
 
-	
-	
+}
+END_TEST
+
+START_TEST(subtractionResultsInNonValidRomanNumeral)
+{
+#line 135
+	writeToConsoleTextFile();
+	sub("CC", "D");
+	char *message6 = "Error. Subtraction results are not a valid Roman numeral.";
+	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message6, strlen(message6)) == 0,"Add func failed to show null arg message");
 	
 }
 END_TEST
@@ -223,6 +230,7 @@ int main(void)
     tcase_add_test(tc1_1, termExceeds3999MessageTest);
     tcase_add_test(tc1_1, nullStringPassedAsArgSub);
     tcase_add_test(tc1_1, nullStringPassedAsArgAdd);
+    tcase_add_test(tc1_1, subtractionResultsInNonValidRomanNumeral);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);
