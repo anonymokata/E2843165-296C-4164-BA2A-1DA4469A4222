@@ -85,6 +85,7 @@ char *getStdoutTextWrittenToFile()
 #test subtractionCheck
 	ck_assert_msg(strcmp(sub("V", "I"), "IV") == 0,"Failed to subtract V - I");
 	ck_assert_msg(strcmp(sub("DCLIX", "XCIX"), "DLX") == 0,"Failed to subtract DCLIX - XCIX");
+	fail_unless(sub("C", "MM") == NULL,"Failed to recognize negative value");
 
 //******************************************************************************************************************************
 //Errors
