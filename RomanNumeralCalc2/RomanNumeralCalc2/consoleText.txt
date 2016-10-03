@@ -1,1 +1,1 @@
-Invalid Roman Numeral char 'J' 
+Invalid Roman numeral pair 'IM' in the string 'MIM'.

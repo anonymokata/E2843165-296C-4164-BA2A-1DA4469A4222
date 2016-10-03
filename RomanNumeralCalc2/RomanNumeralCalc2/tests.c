@@ -27,7 +27,6 @@ void writeToConsoleTextFile()
 }
 char *getStdoutTextWrittenToFile()
 {
-	
 	consoleTextDescr = open("consoleText.txt", O_RDONLY);
 	char *text = malloc (sizeof(char) * 255);
 	read(consoleTextDescr, text, 255);
@@ -38,7 +37,7 @@ char *getStdoutTextWrittenToFile()
 
 START_TEST(convertFromRomanNumeralToBaseTenTest)
 {
-#line 32
+#line 31
 	fail_unless(convertRomanNumeralStringToBaseTenInt("I") == 1,"Failed to convert I to 1");
 	fail_unless(convertRomanNumeralStringToBaseTenInt("V") == 5,"Failed to convert V to 5");
 	fail_unless(convertRomanNumeralStringToBaseTenInt("X") == 10,"Failed to convert X to 10");
@@ -71,7 +70,7 @@ END_TEST
 
 START_TEST(convertIntToRomanNumeralTest)
 {
-#line 60
+#line 59
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(1),  "I") == 0,"Failed to convert 1 to I");
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(1000),  "M") == 0,"Failed to convert 1000 to M");
 	ck_assert_msg(strcmp(convertIntToRomanNumeralString(1500),  "MD") == 0,"Failed to convert 1500 to MD");
@@ -90,7 +89,7 @@ END_TEST
 
 START_TEST(exceedsMaximum)
 {
-#line 74
+#line 73
 	fail_unless(convertRomanNumeralStringToBaseTenInt("MMMCMXCIXI") == 0,"Failed to rejct number larger than 3999");
 	
 //******************************************************************************************************************************
@@ -100,7 +99,7 @@ END_TEST
 
 START_TEST(additionCheck)
 {
-#line 79
+#line 78
 	ck_assert_msg(strcmp(add("V", "I"), "VI") == 0,"Failed to add V + I");
 	ck_assert_msg(strcmp(add("XXXII", "LXIV"), "XCVI") == 0, "Failed to add XXXII + LXIV"); 
 	ck_assert_msg(strcmp(add("IV", "V"), "IX") == 0, "Failed to add IV + V");
@@ -112,7 +111,7 @@ END_TEST
 
 START_TEST(subtractionCheck)
 {
-#line 86
+#line 85
 	ck_assert_msg(strcmp(sub("V", "I"), "IV") == 0,"Failed to subtract V - I");
 	ck_assert_msg(strcmp(sub("DCLIX", "XCIX"), "DLX") == 0,"Failed to subtract DCLIX - XCIX");
 
@@ -124,28 +123,34 @@ END_TEST
 
 START_TEST(badRomanNumeralCharacter)
 {
-#line 93
+#line 92
 	writeToConsoleTextFile();
-	ck_assert_int_eq(convertSingleCharacterToInt('J'), -1);//, "Conversion of non Roman Numeral to int test failed");
+	ck_assert_int_eq(convertSingleCharacterToInt('J'), -1);
 	char *message = "Invalid Roman Numeral char 'J'";
 	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message, strlen(message)) == 0,"Failed to add V + I");
-	//now test for lookAhead since it uses the character conversion
-
+	
 }
 END_TEST
 
 START_TEST(badlookAheadPairs)
 {
-#line 100
+#line 98
+	writeToConsoleTextFile();
 	fail_unless(lookAhead('I', 'C', 0) == -2, "Conversion of non Roman Numeral to int test failed (lookAhead)");
+	char *message1 = "Invalid Roman numeral pair 'IC'";
+	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message1, strlen(message1)) == 0,"Failed to add V + I");
 	
 }
 END_TEST
 
 START_TEST(badConversionToBaseTen)
 {
-#line 103
-	ck_assert_msg(convertRomanNumeralStringToBaseTenInt("MC%") == 0, "convertRomanNumeralStringToBaseTen fails to catch bad input MC%");
+#line 104
+	writeToConsoleTextFile();
+	ck_assert_msg(convertRomanNumeralStringToBaseTenInt("MIM") == 0, "convertRomanNumeralStringToBaseTen fails to catch bad input MC%");
+	char *message2 = "Invalid Roman numeral pair 'IM' in the string 'MIM'.";
+	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message2, strlen(message2)) == 0,"Failed to add V + I");
+	
 	
 	
 }

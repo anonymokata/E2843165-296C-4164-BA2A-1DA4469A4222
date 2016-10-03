@@ -19,7 +19,6 @@ void writeToConsoleTextFile()
 }
 char *getStdoutTextWrittenToFile()
 {
-	
 	consoleTextDescr = open("consoleText.txt", O_RDONLY);
 	char *text = malloc (sizeof(char) * 255);
 	read(consoleTextDescr, text, 255);
@@ -91,14 +90,21 @@ char *getStdoutTextWrittenToFile()
 
 #test badRomanNumeralCharacter
 	writeToConsoleTextFile();
-	ck_assert_int_eq(convertSingleCharacterToInt('J'), -1);//, "Conversion of non Roman Numeral to int test failed");
+	ck_assert_int_eq(convertSingleCharacterToInt('J'), -1);
 	char *message = "Invalid Roman Numeral char 'J'";
 	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message, strlen(message)) == 0,"Failed to add V + I");
 	
 #test badlookAheadPairs
+	writeToConsoleTextFile();
 	fail_unless(lookAhead('I', 'C', 0) == -2, "Conversion of non Roman Numeral to int test failed (lookAhead)");
+	char *message1 = "Invalid Roman numeral pair 'IC'";
+	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message1, strlen(message1)) == 0,"Failed to add V + I");
 	
 #test badConversionToBaseTen
-	ck_assert_msg(convertRomanNumeralStringToBaseTenInt("MC%") == 0, "convertRomanNumeralStringToBaseTen fails to catch bad input MC%");
+	writeToConsoleTextFile();
+	ck_assert_msg(convertRomanNumeralStringToBaseTenInt("MIM") == 0, "convertRomanNumeralStringToBaseTen fails to catch bad input MC%");
+	char *message2 = "Invalid Roman numeral pair 'IM' in the string 'MIM'.";
+	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message2, strlen(message2)) == 0,"Failed to add V + I");
+	
 	
 	
