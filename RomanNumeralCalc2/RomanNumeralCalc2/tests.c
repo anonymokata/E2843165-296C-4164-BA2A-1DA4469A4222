@@ -106,7 +106,7 @@ START_TEST(additionCheck)
 	ck_assert_msg(strcmp(add("MMMCMXCVIII", "I"), "MMMCMXCIX") == 0, "Failed to add MMMCMXCVIII + I");
 	ck_assert_msg(strcmp(add("MMMDCCCLXXXVIII", "II"), "MMMDCCCXC") == 0, "Failed to add MMMDCCCLXXXVIII + II");
 	fail_unless(add("MMM", "M") == NULL,"Add func failed to recognize sum larger than allowable maximum");
-	fail_unless(add("X", "NULL") == NULL,"Add func failed to recognize NULL value");
+	fail_unless(add("X", NULL) == NULL,"Add func failed to recognize NULL value");
 	
 }
 END_TEST

@@ -11,20 +11,12 @@
 
 char *add(char *a, char *b)
 {
-	if (a == NULL)
-	{
-		showTermNullMessage('A');
-		return NULL;
-	}
-	if (b == NULL)
-	{
-		showTermNullMessage('B');
-		return NULL;
-	}
-	int termA = convertRomanNumeralStringToBaseTenInt(a);
-	int termB = convertRomanNumeralStringToBaseTenInt(b);
-	if (termA == 0 || termB ==0)
-		return NULL;
+	int termA = 0;
+	int termB = 0;
+	if (goodInput(a, b, &termA, &termB) == 0)
+		{
+			return NULL;
+		}
 	int sum = termA + termB;
 	if (sum < 4000)
 		return convertIntToRomanNumeralString(sum);
@@ -33,22 +25,31 @@ char *add(char *a, char *b)
 
 char *sub(char *a, char *b)
 {
-	if (a == NULL)
-		{
-			showTermNullMessage('A');
-			return NULL;
-		}
-	if (b == NULL)
-	{
-		showTermNullMessage('B');
-		return NULL;
-	}
-	int termA = convertRomanNumeralStringToBaseTenInt(a);
-	int termB = convertRomanNumeralStringToBaseTenInt(b);
-	if (termA == 0 || termB ==0)
+	int termA = 0;
+	int termB = 0;
+	if (!goodInput(a, b, &termA, &termB))
 		return NULL;
 	int diff = termA - termB;
 	if (diff > 0)
 		return convertIntToRomanNumeralString(diff);
 	return NULL;
+}
+
+int goodInput(char *numeralStringA, char *numeralStringB, int *termA, int *termB)
+{
+	if (numeralStringA == NULL)
+	{
+		showTermNullMessage('A');
+		return 0;
+	}
+	if (numeralStringB == NULL)
+	{
+		showTermNullMessage('B');
+		return 0;
+	}
+	*termA = convertRomanNumeralStringToBaseTenInt(numeralStringA);
+	*termB = convertRomanNumeralStringToBaseTenInt(numeralStringB);
+	if (*termA == 0 || *termB == 0)
+		return 0;
+	return 1;
 }
