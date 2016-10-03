@@ -80,18 +80,20 @@ char *getStdoutTextWrittenToFile()
 	ck_assert_msg(strcmp(add("IV", "V"), "IX") == 0, "Failed to add IV + V");
 	ck_assert_msg(strcmp(add("MMMCMXCVIII", "I"), "MMMCMXCIX") == 0, "Failed to add MMMCMXCVIII + I");
 	ck_assert_msg(strcmp(add("MMMDCCCLXXXVIII", "II"), "MMMDCCCXC") == 0, "Failed to add MMMDCCCLXXXVIII + II");
-	fail_unless(add("MMM", "M") == NULL,"Failed to recognize sum larger than allowable maximum");
+	fail_unless(add("MMM", "M") == NULL,"Add func failed to recognize sum larger than allowable maximum");
+	fail_unless(add("X", "NULL") == NULL,"Add func failed to recognize NULL value");
 	
 #test subtractionCheck
 	ck_assert_msg(strcmp(sub("V", "I"), "IV") == 0,"Failed to subtract V - I");
 	ck_assert_msg(strcmp(sub("DCLIX", "XCIX"), "DLX") == 0,"Failed to subtract DCLIX - XCIX");
-	fail_unless(sub("C", "MM") == NULL,"Failed to recognize negative value");
+	fail_unless(sub("C", "MM") == NULL,"Sub func failed to recognize negative value");
+	fail_unless(sub(NULL, "MM") == NULL,"Sub func failed to recognize NULL value");
 
 #test addAndSubReturnNullForBadSingleTerm
 	fail_unless(sub("*", "I") == NULL,"Failed to recognize bad A term");
 	fail_unless(add("I", "VD") == NULL,"Failed to recognize bad B term");
 //******************************************************************************************************************************
-//Errors
+//Input Errors & Messages
 
 #test badRomanNumeralCharacter
 	writeToConsoleTextFile();
@@ -117,7 +119,8 @@ char *getStdoutTextWrittenToFile()
 	char *message3 = "Numeral string 'MMMCMXCIXI' exceeds maximum allowable value of 3999.";
 	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message3, strlen(message3)) == 0,"Failed to show exceeeds 3999 message");
 	
-
+#test nullStringPassedAsArg
+	
 	
 
 	

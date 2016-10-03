@@ -22,7 +22,8 @@ int convertRomanNumeralStringToBaseTenInt(char* numeralString)
 		{
 			if (total > 3999)
 				showTermExceedsMaximumValueMessage(numeralString);
-			showBadNumeralStringMessage(numeralString);
+			else
+				showBadNumeralStringMessage(numeralString);
 			return 0;
 		}
 	}

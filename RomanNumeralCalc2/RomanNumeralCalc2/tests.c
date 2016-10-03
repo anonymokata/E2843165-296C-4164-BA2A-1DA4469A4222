@@ -126,7 +126,7 @@ START_TEST(addAndSubReturnNullForBadSingleTerm)
 	fail_unless(sub("*", "I") == NULL,"Failed to recognize bad A term");
 	fail_unless(add("I", "VD") == NULL,"Failed to recognize bad B term");
 //******************************************************************************************************************************
-//Errors
+//Input Errors & Messages
 
 }
 END_TEST
