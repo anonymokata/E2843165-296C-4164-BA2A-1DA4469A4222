@@ -10,32 +10,42 @@
 #include "convert.h"
 #include "romanError.h"
 
-char* globalNumeralString = NULL;
-
-int convertRomanNumeralStringToBaseTenInt(char* _numeralString)
+int convertRomanNumeralStringToBaseTenInt(char *numeralString)
 {
-	globalNumeralString = _numeralString;
+	char currentChar = numeralString[0];
+	int charCount = 1;
+	for (int j = 1; j < strlen(numeralString); j++)
+	{
+		if (currentChar == numeralString[j])
+		{	charCount++;
+			if (charCount == 4)
+				return 0;
+		}
+		else
+			charCount = 0;
+		currentChar = numeralString[j];
+	}
 	int total = 0;
 	int i = 0;
 	do
 	{
-		total = checkValue(lookAhead(globalNumeralString[i], globalNumeralString[i+1], &i), total);
+		total = checkValue(lookAhead(numeralString[i], numeralString[i+1], &i), total, numeralString);
 		i++;
-	}while((i < strlen(globalNumeralString)) && (total > 0));
+	}while((i < strlen(numeralString)) && (total > 0));
 	return total;
 }
 
-int checkValue(int lookAheadResult, int currentTotal)
+int checkValue(int lookAheadResult, int currentTotal, char *numeralString)
 {
 	if (lookAheadResult  < 0)
 	{
-		showBadNumeralStringMessage(globalNumeralString);
+		showBadNumeralStringMessage(numeralString);
 		return 0;
 	}
 	int newTotal = currentTotal + lookAheadResult;
 	if (newTotal < 4000)
 		return newTotal;
-	showTermExceedsMaximumValueMessage(globalNumeralString);
+	showTermExceedsMaximumValueMessage(numeralString);
 	return 0;
 }
 /*
@@ -78,14 +88,14 @@ int lookAhead(char currentChar, char nextChar, int *index)
 			}
 		if (((5 * first) == second) || ((10 * first) == second))//same thing for subtraction.
 		{								//this only works because I have the rejection statement first.
-			*index += 1;				//if the string was larger and I expected more good input than bad
-			return (second - first);   //I would probably do the opposite and put this first, then alter the
-		}                              //bad input filter to not overlap rejection
+			*index += 1;
+			return (second - first);
+		}
 	}
 	return first;//you could get "more efficient" and write an addition statement for all known addition pairs,
 	             //but everything I wrote was still three bracketed comparisons and these strings are short,
-				 //so I left it like this rather than refactor again.
-}
+				 //so I left it like this rather than refactor again. This means that the function will sometimes
+}                //only return one value since it has to "wait" on the lookAhead.
 
 int convertSingleCharacterToInt(char numeral)
 {
@@ -112,27 +122,22 @@ int convertSingleCharacterToInt(char numeral)
 
 char* convertIntToRomanNumeralString(int number)
 {
-	_Bool show = 0;
-	if (number == 1)
-		show = 1;
 	char *baseNumerals[14]={"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
 	int value[13]={1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
-	char *numeralString = malloc (sizeof(char) * 16);
-	numeralString[0] = 0;
+	char *convertedString = malloc (sizeof(char) * 16);
+	convertedString[0] = 0;
 	int i = 0;
 	while(number > 0)
 	{
 		while(number > value[i])
 			{
-				strcat(numeralString, baseNumerals[i]);
-				if(show)
-					printf("i = %d and val = %d. meanwhile, string is %s\n", i, number, numeralString);
+				strcat(convertedString, baseNumerals[i]);
 				number -= value[i];
 			}
 		if (number == value[i])//save iterations
-			return strcat(numeralString, baseNumerals[i]);
+			return strcat(convertedString, baseNumerals[i]);
 		i++;
 	}
-	return numeralString;
+	return convertedString;
 }
 

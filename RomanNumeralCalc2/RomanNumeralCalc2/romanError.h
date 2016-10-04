@@ -11,9 +11,9 @@
 void showBadCharMessage(char value);
 void showBadNumeralPairMessage(char a, char b);
 void showBadNumeralStringMessage(char* value);
-void showTermExceedsMaximumValueMessage(char* value);
+void showTermExceedsMaximumValueMessage(char* value);//single term
 void showTermNullMessage(char term);
-void showNonValidSubtractionResult();
-void showSumExceedsMaximumValueMessage();
+void showNonValidSubtractionResultMessage();
+void showSumExceedsMaximumValueMessage();//total of both terms
 
 #endif /* ROMANERROR_H_ */
