@@ -15,5 +15,6 @@ void showTermExceedsMaximumValueMessage(char* value);//single term
 void showTermNullMessage(char term);
 void showNonValidSubtractionResultMessage();
 void showSumExceedsMaximumValueMessage();//total of both terms
+void showExceedsMaximumAllowableFrequencyMessage(char *value);
 
 #endif /* ROMANERROR_H_ */

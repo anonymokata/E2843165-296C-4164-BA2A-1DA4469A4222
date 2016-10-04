@@ -150,4 +150,9 @@ char *getStdoutTextWrittenToFile()
 	char *message7 = "Error. Addition results in sum that exceeds maximum allowable value of 3999.";
 	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message7, strlen(message7)) == 0,"Add func failed to show sum exceeds maximum allowable value message");
 	
+#test sequentialCharactersExceedMaximumFrequencyMessageTest
+	writeToConsoleTextFile();
+	add("MMMM", "I");
+	char *message8 = "Error. Numeral string 'MMMM'exceeds maximum allowable sequential count for single character type.";
+	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message8, strlen(message8)) == 0,"Add func failed to show maximum allowable sequential char count");
 

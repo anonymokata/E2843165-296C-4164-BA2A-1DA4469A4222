@@ -34,6 +34,7 @@ int detectFourSequentialCharactersOfSameType(char *numeralString)
 		{	charCount++;
 			if (charCount == 4)
 				{
+					showExceedsMaximumAllowableFrequencyMessage(numeralString);
 					return 1;
 				}
 		}

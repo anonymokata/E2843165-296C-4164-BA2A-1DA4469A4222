@@ -46,3 +46,8 @@ void showNonValidSubtractionResultMessage()
 {
 	printf("Error. Subtraction results are not a valid Roman numeral (negative or zero).\n");
 }
+
+void showExceedsMaximumAllowableFrequencyMessage(char *value)
+{
+	printf("Error. Numeral string '%s'exceeds maximum allowable sequential count for single character type.\n", value);
+}
