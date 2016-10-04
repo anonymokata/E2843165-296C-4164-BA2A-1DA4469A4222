@@ -25,7 +25,7 @@ int stdout_copy;
 void writeToConsoleTextFile()
 {
 	consoleTextDescr = open("consoleText.txt", O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
-	dup2(consoleTextDescr, 1);
+	dup2(consoleTextDescr, 2);
 	close(consoleTextDescr);	
 }
 char *getStdoutTextWrittenToFile()
