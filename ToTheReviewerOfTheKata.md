@@ -1,4 +1,6 @@
 # RomanNumeralCalcLib
+If you'd like to just skip to the code, you'll need to navigate here: RomanNumeralCalcLib/RomanNumeralCalc2/RomanNumeralCalc2/
+  
 Why are there 2 contributors? Why do you have an empty RomanCalcLib2? 
 
 Embarrasingly, I tried to start a brand new github account for 2 reasons:  
