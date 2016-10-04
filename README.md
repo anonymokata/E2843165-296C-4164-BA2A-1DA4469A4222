@@ -20,8 +20,8 @@ Functions Intended for Public Use:
 * add(char *term1, char *term2)  
 	* add takes two Roman numeral variables, in char* format, adds them, and returns the sum as a char\*  
 	* add returns NULL for any non-valid input  
-	* add will print to stderr the offending character or character pair, and string that the character/pair is contained in  
-	* add will print to an error to stderr if the sum exceeds 3999  
+	* given non-valid input, add will print the offending character or character pair, and string that the character/pair is contained in, to stderr  
+	* add will print an error to stderr if the sum exceeds 3999  
   
 * sub(char *term1, char *term2)  
 	* sub takes two Roman numeral variables, in char* format, subtracts them, and returns the difference as a char*  
