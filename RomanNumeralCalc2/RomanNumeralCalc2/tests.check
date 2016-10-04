@@ -100,7 +100,7 @@ char *getStdoutTextWrittenToFile()
 //Input Errors & Messages
 
 #test characterExceedsMaximumFrequency
-	fail_unless(convertRomanNumeralStringToBaseTenInt("CCCC") == 0, "Failed to detect maximum character frequency in numeral string");
+	fail_unless(convertRomanNumeralStringToBaseTenInt("CCCCC") == 0, "Failed to detect maximum character frequency in numeral string");
 
 #test badRomanNumeralCharacter
 	writeToConsoleTextFile();

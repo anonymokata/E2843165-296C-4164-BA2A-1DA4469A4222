@@ -14,5 +14,6 @@ int lookAhead(char first, char second, int *index);
 char* convertIntToRomanNumeralString(int number);
 char* throwError(int _err);
 int checkValue(int lookAheadResult, int currentTotal, char *numeralString);
+int detectFourSequentialCharactersOfSameType(char *numeralString);
 
 #endif /* CONVERT_H_ */

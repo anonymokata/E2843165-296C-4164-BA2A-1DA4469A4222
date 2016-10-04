@@ -140,7 +140,7 @@ END_TEST
 START_TEST(characterExceedsMaximumFrequency)
 {
 #line 103
-	fail_unless(convertRomanNumeralStringToBaseTenInt("CCCC") == 0, "Failed to detect maximum character frequency in numeral string");
+	fail_unless(convertRomanNumeralStringToBaseTenInt("CCCCC") == 0, "Failed to detect maximum character frequency in numeral string");
 
 }
 END_TEST

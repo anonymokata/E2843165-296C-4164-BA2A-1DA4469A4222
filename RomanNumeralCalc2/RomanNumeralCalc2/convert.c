@@ -12,19 +12,8 @@
 
 int convertRomanNumeralStringToBaseTenInt(char *numeralString)
 {
-	char currentChar = numeralString[0];
-	int charCount = 1;
-	for (int j = 1; j < strlen(numeralString); j++)
-	{
-		if (currentChar == numeralString[j])
-		{	charCount++;
-			if (charCount == 4)
-				return 0;
-		}
-		else
-			charCount = 0;
-		currentChar = numeralString[j];
-	}
+	if (detectFourSequentialCharactersOfSameType(numeralString))
+		return 0;
 	int total = 0;
 	int i = 0;
 	do
@@ -33,6 +22,26 @@ int convertRomanNumeralStringToBaseTenInt(char *numeralString)
 		i++;
 	}while((i < strlen(numeralString)) && (total > 0));
 	return total;
+}
+
+int detectFourSequentialCharactersOfSameType(char *numeralString)
+{
+	char currentChar = numeralString[0];
+	int charCount = 1;
+	for (int j = 1; j < strlen(numeralString); j++)
+	{
+		if (currentChar == numeralString[j])
+		{	charCount++;
+			if (charCount == 4)
+				{
+					return 1;
+				}
+		}
+		else
+			charCount = 0;
+		currentChar = numeralString[j];
+	}
+	return 0;
 }
 
 int checkValue(int lookAheadResult, int currentTotal, char *numeralString)
