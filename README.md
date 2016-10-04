@@ -30,7 +30,7 @@ Functions Intended for Public Use:
 	* sub will print to stderr the offending character or character pair, and string that the character/pair is contained in  
 	* sub will print an error to stderr if the difference is zero or negative  
     
-Other functions in the library have been fully commented should the user care to incorporate their functionality  
+Other functions in the library have been fully commented should the user care to incorporate them.  
   
 Go forth and calculate. May your empire remain lead-free!  
    
