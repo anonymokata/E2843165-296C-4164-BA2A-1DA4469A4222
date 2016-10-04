@@ -24,13 +24,15 @@ int convertRomanNumeralStringToBaseTenInt(char *numeralString)
 	return total;
 }
 
+//this function only detects strings that have more than 3 sequential characters of any type
+//VV, LL, DD are caught by the lookAhead function
 int detectFourSequentialCharactersOfSameType(char *numeralString)
 {
 	char currentChar = numeralString[0];
 	int charCount = 1;
-	for (int j = 1; j < strlen(numeralString); j++)
+	for (int i = 1; i < strlen(numeralString); i++)
 	{
-		if (currentChar == numeralString[j])
+		if (currentChar == numeralString[i])
 		{	charCount++;
 			if (charCount == 4)
 				{
@@ -40,7 +42,7 @@ int detectFourSequentialCharactersOfSameType(char *numeralString)
 		}
 		else
 			charCount = 0;
-		currentChar = numeralString[j];
+		currentChar = numeralString[i];
 	}
 	return 0;
 }
