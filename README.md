@@ -17,13 +17,13 @@ A few points of interest :
   
 Functions Intended for Public Use:  
   
-	add(char \*term1, char \*term2)  
-  * add takes two Roman numeral variables, in char* format, adds them, and returns the sum as a char\*  
-  * add returns NULL for any non-valid input  
-  * add will print to stderr the offending character or character pair, and string that the character/pair is contained in  
-  * add will print to an error to stderr if the sum exceeds 3999  
+* add(char *term1, char *term2)  
+	* add takes two Roman numeral variables, in char* format, adds them, and returns the sum as a char\*  
+	* add returns NULL for any non-valid input  
+	* add will print to stderr the offending character or character pair, and string that the character/pair is contained in  
+	* add will print to an error to stderr if the sum exceeds 3999  
   
-	sub(char \*term1, char \*term2)  
+* sub(char *term1, char *term2)  
 	* sub takes two Roman numeral variables, in char* format, subtracts them, and returns the difference as a char*  
 	* sub subtracts term2 from term1 | sub("XX", "V") returns "XV" | (20 - 5) = 15  
 	* add returns NULL for any non-valid input  
