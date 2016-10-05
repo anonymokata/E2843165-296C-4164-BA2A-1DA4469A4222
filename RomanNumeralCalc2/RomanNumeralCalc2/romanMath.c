@@ -57,6 +57,6 @@ int goodInput(char *numeralStringA, char *numeralStringB, int *termA, int *termB
 	*termA = convertRomanNumeralStringToBaseTenInt(numeralStringA);
 	*termB = convertRomanNumeralStringToBaseTenInt(numeralStringB);
 	if (*termA == 0 || *termB == 0)
-		return 0;//wait to report the output so that we can identify the offending string to the user
+		return 0;//wait to report the output so that we can identify the offending string for the user
 	return 1;
 }
