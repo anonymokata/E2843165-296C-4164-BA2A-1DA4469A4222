@@ -161,7 +161,7 @@ char* convertIntToRomanNumeralString(int number)
 				strcat(convertedString, baseNumerals[i]);
 				number -= value[i];
 			}
-		if (number == value[i])//save a few iterations
+		if (number == value[i])
 					return strcat(convertedString, baseNumerals[i]);
 		i++;
 	}
