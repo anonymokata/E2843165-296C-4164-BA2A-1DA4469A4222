@@ -2,7 +2,7 @@
  * convert.c
  *
  *  Created on: Sep 27, 2016
- *      Author: brad
+ *      Author: brad rust
  */
 #include <stdio.h>
 #include <string.h>
