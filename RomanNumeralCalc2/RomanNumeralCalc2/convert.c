@@ -10,6 +10,15 @@
 #include "convert.h"
 #include "romanError.h"
 
+//this function reports directly to romanMath, and acts as an
+//access layer of sorts since all conversion and error reporting functions
+//speak to it.
+//it takes in a string and outputs an integer. Along the way,
+//it and the functions that are called by it do the error checking
+//for invalid characters, character pairs, maximum sequential characters
+//and single terms that exceed 3999. Each check calls romanError
+//directly so that error messages don't have to be routed back to
+//this function. Thus, it only reports one general failure mode
 int convertRomanNumeralStringToBaseTenInt(char *numeralString)
 {
 	if (detectFourSequentialCharactersOfSameType(numeralString))
@@ -46,7 +55,8 @@ int detectFourSequentialCharactersOfSameType(char *numeralString)
 	}
 	return 0;
 }
-
+//direct result of refactoring convertRomanNumeralStringToBaseTenInt
+//to deal exclusively in good totals/conversions
 int checkValue(int lookAheadResult, int currentTotal, char *numeralString)
 {
 	if (lookAheadResult  < 0)
@@ -93,21 +103,20 @@ int lookAhead(char currentChar, char nextChar, int *index)
 		int second = convertSingleCharacterToInt(nextChar);
 		if (first == -1 || second == -1)
 			return -1;
-		if ((second / first >= 50) || ((first == 5 || first == 50 || first == 500) && (second >= first)))
+		if ((second / first >= 50) || ((first == 5 || first == 50 || first == 500) && (second >= first)))//outright rejections
 			{
 				showBadNumeralPairMessage(currentChar, nextChar);
 				return -2;
 			}
-		if (((5 * first) == second) || ((10 * first) == second))//same thing for subtraction.
+		if (((5 * first) == second) || ((10 * first) == second))//subtraction.
 		{								//this only works because I have the rejection statement first.
 			*index += 1;
 			return (second - first);
 		}
 	}
-	return first;//you could get "more efficient" and write an addition statement for all known addition pairs,
-	             //but everything I wrote was still three bracketed comparisons and these strings are short,
-				 //so I left it like this rather than refactor again. This means that the function will sometimes
-}                //only return one value since it has to "wait" on the lookAhead.
+	return first;//gotta wait. only return a single value since we don't have enough information.
+}                //considered recursive function but rejected the solution
+
 
 int convertSingleCharacterToInt(char numeral)
 {
@@ -132,6 +141,8 @@ int convertSingleCharacterToInt(char numeral)
 	return -1;
 }
 
+//A less "visual" approach seemed appropriate here. Use a pseudo lookup table instead
+//baseNumerals[] and value[] arrays are the same size and serve as a 1D lookup table
 char* convertIntToRomanNumeralString(int number)
 {
 	char *baseNumerals[14]={"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
@@ -141,13 +152,14 @@ char* convertIntToRomanNumeralString(int number)
 	int i = 0;
 	while(number > 0)
 	{
-		while(number > value[i])
-			{
+		if (number == value[i])//save a few iterations
+			return strcat(convertedString, baseNumerals[i]);
+		while(number > value[i])//if the number being converted is larger than the current value in the array
+			{					//add the corresponding string of current value to our conversion string
 				strcat(convertedString, baseNumerals[i]);
 				number -= value[i];
 			}
-		if (number == value[i])//save iterations
-			return strcat(convertedString, baseNumerals[i]);
+
 		i++;
 	}
 	return convertedString;

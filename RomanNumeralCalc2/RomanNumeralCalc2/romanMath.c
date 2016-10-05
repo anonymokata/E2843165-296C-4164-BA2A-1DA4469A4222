@@ -9,6 +9,10 @@
 #include "romanMath.h"
 #include "romanError.h"
 
+//add first checks if inputs are good (non-null, non-zero)
+//if so, find the sum. if the sum is less than 4000, convert it
+//back to Roman numerals. if the value is too large to convert,
+//show an error message.
 char *add(char *a, char *b)
 {
 	int termA, termB;
@@ -22,6 +26,7 @@ char *add(char *a, char *b)
 	return NULL;
 }
 
+//follows same pattern as add
 char *sub(char *a, char *b)
 {
 	int termA, termB;
