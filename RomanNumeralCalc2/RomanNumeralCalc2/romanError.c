@@ -52,3 +52,9 @@ void showExceedsMaximumAllowableFrequencyMessage(char *value)
 {
 	fprintf(stderr, "Error. Numeral string '%s'exceeds maximum allowable sequential count for single character type.\n", value);
 }
+
+void showNonValidNumeralStringMessage(char *value)
+{
+	fprintf(stderr, "Error. Numeral string %s violates proper input principles.\n", value);
+}
+

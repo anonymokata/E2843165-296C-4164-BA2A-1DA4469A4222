@@ -79,6 +79,8 @@ char *getStdoutTextWrittenToFile()
 
 #test additionCheck
 	ck_assert_msg(strcmp(add("V", "I"), "VI") == 0,"Failed to add V + I");
+	fail_unless(add("MXIVV", "I") == NULL,"Failed to recognize bad input");
+	fail_unless(add("MXIVIV", "I") == NULL,"Failed to recognize bad input");
 	ck_assert_msg(strcmp(add("XXXII", "LXIV"), "XCVI") == 0, "Failed to add XXXII + LXIV"); 
 	ck_assert_msg(strcmp(add("IV", "V"), "IX") == 0, "Failed to add IV + V");
 	ck_assert_msg(strcmp(add("MMMCMXCVIII", "I"), "MMMCMXCIX") == 0, "Failed to add MMMCMXCVIII + I");

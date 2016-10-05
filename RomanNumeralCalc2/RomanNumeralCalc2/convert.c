@@ -10,6 +10,7 @@
 #include "convert.h"
 #include "romanError.h"
 
+_Bool occurrences[6] = {0, 0, 0, 0, 0, 0};
 //this function reports directly to romanMath, and acts as an
 //access layer of sorts since all conversion and error reporting functions
 //speak to it.
@@ -21,12 +22,9 @@
 //this function. Thus, it only reports one general failure mode
 int convertRomanNumeralStringToBaseTenInt(char *numeralString)
 {
-	if (strcmp("MMMCC", numeralString) == 0)
-	{
-		printf("arrived\n\n");
-	}
 	if (detectFourSequentialCharactersOfSameType(numeralString))
 		return 0;
+	resetOccurrences();
 	int total = 0;
 	int i = 0;
 	do
@@ -41,12 +39,15 @@ int convertRomanNumeralStringToBaseTenInt(char *numeralString)
 //VV, LL, DD are caught by the lookAhead function
 int detectFourSequentialCharactersOfSameType(char *numeralString)
 {
+
 	char currentChar = numeralString[0];
 	int charCount = 1;
 	for (int i = 1; i < strlen(numeralString); i++)
 	{
 		if (currentChar == numeralString[i])
 		{	charCount++;
+			if ((charCount == 2) && (currentChar == 'V' || currentChar == 'L' || currentChar == 'D'))
+				return 1;
 			if (charCount == 4)
 			{
 				showExceedsMaximumAllowableFrequencyMessage(numeralString);
@@ -54,7 +55,7 @@ int detectFourSequentialCharactersOfSameType(char *numeralString)
 			}
 		}
 		else
-			charCount = 0;
+			charCount = 1;
 		currentChar = numeralString[i];
 	}
 	return 0;
@@ -63,6 +64,11 @@ int detectFourSequentialCharactersOfSameType(char *numeralString)
 //to deal exclusively in good totals/conversions
 int checkValue(int lookAheadResult, int currentTotal, char *numeralString)
 {
+	if (recurs(lookAheadResult))
+	{
+		showNonValidNumeralStringMessage(numeralString);
+		return 0;
+	}
 	if (lookAheadResult  < 0)
 	{
 		showBadNumeralStringMessage(numeralString);
@@ -74,6 +80,29 @@ int checkValue(int lookAheadResult, int currentTotal, char *numeralString)
 	showTermExceedsMaximumValueMessage(numeralString);
 	return 0;
 }
+
+//keeps track of how many times the same value was returned
+//we should never see these values twice. All other repeats
+// (VV, MMMM, LL, DD) are caught elsewhere
+int recurs(int result)
+{	int terms[6] = {900, 400, 90, 40, 9, 4};
+	for (int i = 0; i < 6; i++)
+	{
+		if (terms[i] == result)//if our result is a value in terms
+		{
+			occurrences[i] = occurrences[i] == 0 ? 1 : 0;//if not found before, assign 1. else, assign 0
+			return !occurrences[i];//return the opposite of the assignment. If it's a 1 now, it hasn't happened before
+		}
+	}
+	return 0;//not one of the terms
+}
+
+void resetOccurrences()
+{
+	for (int i = 0; i < 6; i++)
+		occurrences[i] = 0;
+}
+
 /*
 lookAhead refactor -
 
@@ -115,11 +144,12 @@ int lookAhead(char currentChar, char nextChar, int *index)
 		if (((5 * first) == second) || ((10 * first) == second))//subtraction.
 		{								//this only works because I have the rejection statement first.
 			*index += 1;
-			return (second - first);
+			return second - first;
 		}
 	}
 	return first;//gotta wait. only return a single value since we don't have enough information.
-}                //considered recursive function but rejected the solution
+}
+
 
 
 int convertSingleCharacterToInt(char numeral)
