@@ -99,6 +99,9 @@ char *getStdoutTextWrittenToFile()
 //******************************************************************************************************************************
 //Input Errors & Messages
 
+#test characterExceedsMaximumFrequency
+ 	fail_unless(convertRomanNumeralStringToBaseTenInt("CCCCC") == 0, "Failed to detect maximum character frequency in numeral string");
+
 #test badRomanNumeralCharacter
 	writeToConsoleTextFile();
 	ck_assert_int_eq(convertSingleCharacterToInt('J'), -1);

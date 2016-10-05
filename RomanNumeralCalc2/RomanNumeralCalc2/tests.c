@@ -137,9 +137,17 @@ START_TEST(addAndSubReturnNullForBadSingleTerm)
 }
 END_TEST
 
-START_TEST(badRomanNumeralCharacter)
+START_TEST(characterExceedsMaximumFrequency)
 {
 #line 103
+ 	fail_unless(convertRomanNumeralStringToBaseTenInt("CCCCC") == 0, "Failed to detect maximum character frequency in numeral string");
+
+}
+END_TEST
+
+START_TEST(badRomanNumeralCharacter)
+{
+#line 106
 	writeToConsoleTextFile();
 	ck_assert_int_eq(convertSingleCharacterToInt('J'), -1);
 	char *message = "Invalid Roman Numeral char 'J'";
@@ -150,7 +158,7 @@ END_TEST
 
 START_TEST(badlookAheadPairs)
 {
-#line 109
+#line 112
 	writeToConsoleTextFile();
 	fail_unless(lookAhead('I', 'C', 0) == -2, "Conversion of non Roman Numeral to int test failed (lookAhead)");
 	char *message1 = "Invalid Roman numeral pair 'IC'";
@@ -161,7 +169,7 @@ END_TEST
 
 START_TEST(badConversionToBaseTen)
 {
-#line 115
+#line 118
 	writeToConsoleTextFile();
 	ck_assert_msg(convertRomanNumeralStringToBaseTenInt("MIM") == 0, "convertRomanNumeralStringToBaseTen fails to catch bad input MC%");
 	char *message2 = "Invalid Roman numeral pair 'IM' in the string 'MIM'.";
@@ -172,7 +180,7 @@ END_TEST
 
 START_TEST(termExceeds3999MessageTest)
 {
-#line 121
+#line 124
 	writeToConsoleTextFile();
 	convertRomanNumeralStringToBaseTenInt("MMMCMXCIXI");
 	char *message3 = "Numeral string 'MMMCMXCIXI' exceeds maximum allowable value of 3999.";
@@ -183,7 +191,7 @@ END_TEST
 
 START_TEST(nullStringPassedAsArgSub)
 {
-#line 127
+#line 130
 	writeToConsoleTextFile();
 	sub(NULL, "MM");
 	char *message4 = "Error. Term A null.";
@@ -194,7 +202,7 @@ END_TEST
 
 START_TEST(nullStringPassedAsArgAdd)
 {
-#line 133
+#line 136
 	writeToConsoleTextFile();
 	add("CC", NULL);
 	char *message5 = "Error. Term B null.";
@@ -205,7 +213,7 @@ END_TEST
 
 START_TEST(subtractionYieldsNonValidRomanNumeral)
 {
-#line 139
+#line 142
 	writeToConsoleTextFile();
 	sub("CC", "MD");
 	char *message6 = "Error. Subtraction results are not a valid Roman numeral (negative or zero).";
@@ -216,7 +224,7 @@ END_TEST
 
 START_TEST(sumExceedsMaximumValueErrorMessageTest)
 {
-#line 145
+#line 148
 	writeToConsoleTextFile();
 	add("MMM", "M");
 	char *message7 = "Error. Addition results in sum that exceeds maximum allowable value of 3999.";
@@ -227,7 +235,7 @@ END_TEST
 
 START_TEST(sequentialCharactersExceedMaximumFrequencyMessageTest)
 {
-#line 151
+#line 154
 	writeToConsoleTextFile();
 	add("MMMM", "I");
 	char *message8 = "Error. Numeral string 'MMMM'exceeds maximum allowable sequential count for single character type.";
@@ -251,6 +259,7 @@ int main(void)
     tcase_add_test(tc1_1, additionCheck);
     tcase_add_test(tc1_1, subtractionCheck);
     tcase_add_test(tc1_1, addAndSubReturnNullForBadSingleTerm);
+    tcase_add_test(tc1_1, characterExceedsMaximumFrequency);
     tcase_add_test(tc1_1, badRomanNumeralCharacter);
     tcase_add_test(tc1_1, badlookAheadPairs);
     tcase_add_test(tc1_1, badConversionToBaseTen);
