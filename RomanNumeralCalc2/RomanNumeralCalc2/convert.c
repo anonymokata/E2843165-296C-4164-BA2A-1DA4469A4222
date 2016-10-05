@@ -21,6 +21,10 @@
 //this function. Thus, it only reports one general failure mode
 int convertRomanNumeralStringToBaseTenInt(char *numeralString)
 {
+	if (strcmp("MMMCC", numeralString) == 0)
+	{
+		printf("arrived\n\n");
+	}
 	if (detectFourSequentialCharactersOfSameType(numeralString))
 		return 0;
 	int total = 0;
@@ -152,14 +156,13 @@ char* convertIntToRomanNumeralString(int number)
 	int i = 0;
 	while(number > 0)
 	{
-		if (number == value[i])//save a few iterations
-			return strcat(convertedString, baseNumerals[i]);
 		while(number > value[i])//if the number being converted is larger than the current value in the array
 			{					//add the corresponding string of current value to our conversion string
 				strcat(convertedString, baseNumerals[i]);
 				number -= value[i];
 			}
-
+		if (number == value[i])//save a few iterations
+					return strcat(convertedString, baseNumerals[i]);
 		i++;
 	}
 	return convertedString;
