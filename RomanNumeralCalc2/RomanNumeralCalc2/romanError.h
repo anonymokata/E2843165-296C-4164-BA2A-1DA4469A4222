@@ -15,7 +15,6 @@ void showTermExceedsMaximumValueMessage(char* value);//single term
 void showTermNullMessage(char term);
 void showNonValidSubtractionResultMessage();
 void showSumExceedsMaximumValueMessage();//total of both terms
-void showExceedsMaximumAllowableFrequencyMessage(char *value);
 void showViolatesModernConventionMessage(char *value);
 void showLastConvertedValueLessThanCurrentValue();
 

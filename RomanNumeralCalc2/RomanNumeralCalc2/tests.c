@@ -172,12 +172,12 @@ START_TEST(badRomanNumeralCharacter)
 }
 END_TEST
 
-START_TEST(badlookAheadPairs)
+START_TEST(badgetNextConvertableValuePairs)
 {
 #line 118
 	writeToConsoleTextFile();
-	fail_unless(lookAhead('I', 'C', 0) == -2, "Conversion of non Roman Numeral to int test failed (lookAhead)");
-	char *message1 = "Invalid Roman numeral pair 'IC'";
+	fail_unless(getNextConvertableValue('I', 'C', 0) == -2, "Conversion of non Roman Numeral to int test failed (getNextConvertableValue)");
+	char *message1 = "Error. Invalid Roman numeral pair 'IC'";
 	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message1, strlen(message1)) == 0,"Failed to show bad pair message");
 	
 }
@@ -188,7 +188,7 @@ START_TEST(badConversionToBaseTen)
 #line 124
 	writeToConsoleTextFile();
 	ck_assert_msg(convertRomanNumeralStringToBaseTenInt("MIM") == 0, "convertRomanNumeralStringToBaseTen fails to catch bad input MC%");
-	char *message2 = "Invalid Roman numeral pair 'IM' in the string 'MIM'.";
+	char *message2 = "Error. Invalid Roman numeral pair 'IM' in the string 'MIM'.";
 	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message2, strlen(message2)) == 0,"Failed to show bad conversion messages");
 	
 }
@@ -289,7 +289,7 @@ int main(void)
     tcase_add_test(tc1_1, convertedValuesOutOfOrder);
     tcase_add_test(tc1_1, characterExceedsMaximumFrequency);
     tcase_add_test(tc1_1, badRomanNumeralCharacter);
-    tcase_add_test(tc1_1, badlookAheadPairs);
+    tcase_add_test(tc1_1, badgetNextConvertableValuePairs);
     tcase_add_test(tc1_1, badConversionToBaseTen);
     tcase_add_test(tc1_1, termExceeds3999MessageTest);
     tcase_add_test(tc1_1, nullStringPassedAsArgSub);

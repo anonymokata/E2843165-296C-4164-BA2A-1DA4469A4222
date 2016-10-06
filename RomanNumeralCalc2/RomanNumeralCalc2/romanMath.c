@@ -9,10 +9,6 @@
 #include "romanMath.h"
 #include "romanError.h"
 
-//add first checks if inputs are good (non-null, non-zero)
-//if so, find the sum. if the sum is less than 4000, convert it
-//back to Roman numerals. if the value is too large to convert,
-//show an error message.
 char *add(char *a, char *b)
 {
 	int termA, termB;
@@ -26,7 +22,6 @@ char *add(char *a, char *b)
 	return NULL;
 }
 
-//follows same pattern as add
 char *sub(char *a, char *b)
 {
 	int termA, termB;
@@ -40,8 +35,6 @@ char *sub(char *a, char *b)
 	return NULL;
 }
 
-//ensures both inputs are valid. If either is null, has a single character,
-//or a combination of characters that is invalid, the function returns 0
 int goodInput(char *numeralStringA, char *numeralStringB, int *termA, int *termB)
 {
 	if (numeralStringA == NULL)
@@ -57,6 +50,6 @@ int goodInput(char *numeralStringA, char *numeralStringB, int *termA, int *termB
 	*termA = convertRomanNumeralStringToBaseTenInt(numeralStringA);
 	*termB = convertRomanNumeralStringToBaseTenInt(numeralStringB);
 	if (*termA == 0 || *termB == 0)
-		return 0;//wait to report the output so that we can identify the offending string for the user
+		return 0;
 	return 1;
 }

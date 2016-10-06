@@ -10,13 +10,13 @@
 
 int convertRomanNumeralStringToBaseTenInt(char* numeral);
 int convertSingleCharacterToInt(char numeral);
-int lookAhead(char first, char second, int *index);
+int getNextConvertableValue(char first, char second, int *index);
 char* convertIntToRomanNumeralString(int number);
 char* throwError(int _err);
-int checkValue(int lookAheadResult, int currentTotal, char *numeralString);
+int checkConvertedTermValue(int lookAheadResult, int currentTotal, char *numeralString);
 int detectFourSequentialCharactersOfSameType(char *numeralString);
-int convertedValueExceedsMaximumFrequency(int result, char *numeralString);
-void resetOccurrences();
+int convertedTermValueExceedsMaximumFrequency(int result, char *numeralString);
+void resetTermOccurrences();
 _Bool numeralStringAdheresToModernConvention(int convertedValue, int lastConvertedValue, char *numeralString);
 
 #endif /* CONVERT_H_ */

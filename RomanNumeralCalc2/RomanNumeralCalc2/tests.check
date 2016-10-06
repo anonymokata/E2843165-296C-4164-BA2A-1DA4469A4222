@@ -114,16 +114,16 @@ char *getStdoutTextWrittenToFile()
 	char *message = "Invalid Roman Numeral char 'J'";
 	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message, strlen(message)) == 0,"Failed to show bad character message");
 	
-#test badlookAheadPairs
+#test badgetNextConvertableValuePairs
 	writeToConsoleTextFile();
-	fail_unless(lookAhead('I', 'C', 0) == -2, "Conversion of non Roman Numeral to int test failed (lookAhead)");
-	char *message1 = "Invalid Roman numeral pair 'IC'";
+	fail_unless(getNextConvertableValue('I', 'C', 0) == -2, "Conversion of non Roman Numeral to int test failed (getNextConvertableValue)");
+	char *message1 = "Error. Invalid Roman numeral pair 'IC'";
 	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message1, strlen(message1)) == 0,"Failed to show bad pair message");
 	
 #test badConversionToBaseTen
 	writeToConsoleTextFile();
 	ck_assert_msg(convertRomanNumeralStringToBaseTenInt("MIM") == 0, "convertRomanNumeralStringToBaseTen fails to catch bad input MC%");
-	char *message2 = "Invalid Roman numeral pair 'IM' in the string 'MIM'.";
+	char *message2 = "Error. Invalid Roman numeral pair 'IM' in the string 'MIM'.";
 	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message2, strlen(message2)) == 0,"Failed to show bad conversion messages");
 	
 #test termExceeds3999MessageTest

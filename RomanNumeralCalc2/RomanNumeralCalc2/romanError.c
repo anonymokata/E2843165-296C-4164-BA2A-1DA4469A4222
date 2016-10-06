@@ -19,7 +19,7 @@ void showBadCharMessage(char value)
 
 void showBadNumeralPairMessage(char a, char b)
 {
-	fprintf(stderr, "Invalid Roman numeral pair '%c%c' ", a, b);
+	fprintf(stderr, "Error. Invalid Roman numeral pair '%c%c' ", a, b);
 	fflush(stdout);
 }
 
@@ -46,11 +46,6 @@ void showTermNullMessage(char term)
 void showNonValidSubtractionResultMessage()
 {
 	fprintf(stderr, "Error. Subtraction results are not a valid Roman numeral (negative or zero).\n");
-}
-
-void showExceedsMaximumAllowableFrequencyMessage(char *value)
-{
-	fprintf(stderr, "Error. Numeral string '%s'exceeds maximum allowable sequential count for single character type.\n", value);
 }
 
 void showViolatesModernConventionMessage(char *value)
