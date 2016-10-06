@@ -4,7 +4,7 @@
 
 #create our compiler and flags variables
 CC=gcc
-CFLAGS=-g -std=c99 -Wall -Werror -D_GNU_SOURCE
+CFLAGS=-g -std=c99 -Wall -Werror -D_GNU_SOURCE 
 #    link check and include the math and timer libs that are throwing errors (associated with Check)
 LIBS=-lcheck -pthread -lm -lrt
 

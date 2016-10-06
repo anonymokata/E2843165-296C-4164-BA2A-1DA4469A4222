@@ -1,2 +1,4 @@
-Error. Numeral string 'MMMM'exceeds maximum allowable sequential count for single character type.
 Error. Addition results in sum that exceeds maximum allowable value of 3999.
+able value of 3999.
+exceeds maximum allowable value of 3999.
+ults in sum that exceeds maximum allowable value of 3999.

@@ -15,7 +15,7 @@ char* convertIntToRomanNumeralString(int number);
 char* throwError(int _err);
 int checkValue(int lookAheadResult, int currentTotal, char *numeralString);
 int detectFourSequentialCharactersOfSameType(char *numeralString);
-int recurs(int result);
+int convertedValueExceedsMaximumFrequency(int result);
 void resetOccurrences();
 
 #endif /* CONVERT_H_ */
