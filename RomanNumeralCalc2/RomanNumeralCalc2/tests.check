@@ -85,6 +85,7 @@ char *getStdoutTextWrittenToFile()
 	fail_unless(add("MMM", "M") == NULL,"Add func failed to recognize sum larger than allowable maximum");
 	fail_unless(add("X", NULL) == NULL,"Add func failed to recognize NULL value");
 	fail_unless(add("XIXX", "I") == NULL, "Failed to recognize improper input.");
+	
 #test subtractionCheck
 	ck_assert_msg(strcmp(sub("V", "I"), "IV") == 0,"Failed to subtract V - I");
 	ck_assert_msg(strcmp(sub("DCLIX", "XCIX"), "DLX") == 0,"Failed to subtract DCLIX - XCIX");
@@ -92,7 +93,7 @@ char *getStdoutTextWrittenToFile()
 	fail_unless(sub(NULL, "EXPERIENCE_IS_THE_TEACHER_OF_ALL_THINGS") == NULL,"Sub func failed to recognize NULL value");
 	fail_unless(sub("CCC", "CCC") == NULL,"Sub func failed to recognize zero");
 
-#test addAndSubReturnNullForBadSingleTerm
+#test addAndSubFunctionsReturnNullForBadSingleTerm
 	fail_unless(sub("MMMIV*", "I") == NULL,"Failed to recognize bad A term");
 	fail_unless(add("I", "VD") == NULL,"Failed to recognize bad B term");
 

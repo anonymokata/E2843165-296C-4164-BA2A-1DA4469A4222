@@ -9,8 +9,6 @@
 #include "romanMath.h"
 #include "romanError.h"
 
-//takes as input two char arrays (a and b)
-//outputs
 char *add(char *a, char *b)
 {
 	int termA, termB;
