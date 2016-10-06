@@ -57,7 +57,7 @@ int checkValue(int lookAheadResult, int currentTotal, char *numeralString)
 		showBadNumeralStringMessage(numeralString);
 		return 0;
 	}
-	if (convertedValueExceedsMaximumFrequency(lookAheadResult))
+	if (convertedValueExceedsMaximumFrequency(lookAheadResult, numeralString) > 0)
 	{
 		showViolatesModernConventionMessage(numeralString);
 		return 0;
@@ -69,14 +69,14 @@ int checkValue(int lookAheadResult, int currentTotal, char *numeralString)
 	return 0;
 }
 
-int convertedValueExceedsMaximumFrequency(int result)
+int convertedValueExceedsMaximumFrequency(int result, char *numeralString)
 {	int conertedValues[13] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
 	int maximumAllowableFrequency[13] = {3, 1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 3};
 	for (int i = 0; i < 13; i++)
 	{
 		if (conertedValues[i] == result)
 		{
-			if (conertedValues[i] > lastResult)
+			if (!numeralStringAdheresToModernConvention(result, lastResult, numeralString))
 				return 1;
 			lastResult = result;
 			occurrences[i] += 1;
@@ -84,6 +84,16 @@ int convertedValueExceedsMaximumFrequency(int result)
 		}
 	}
 	return 0;
+}
+
+_Bool numeralStringAdheresToModernConvention(int convertedValue, int lastConvertedValue, char *numeralString)
+{
+	if (convertedValue > lastConvertedValue)
+	{
+		showViolatesModernConventionMessage(numeralString);
+		return 0;
+	}
+	return 1;
 }
 
 int convertSingleCharacterToInt(char numeral)

@@ -249,7 +249,7 @@ START_TEST(sumExceedsMaximumValueErrorMessageTest)
 }
 END_TEST
 
-START_TEST(violtesModernConventionErrorMessageTest)
+START_TEST(violatesModernConventionErrorMessageTest)
 {
 #line 160
 	writeToConsoleTextFile();
@@ -296,7 +296,7 @@ int main(void)
     tcase_add_test(tc1_1, nullStringPassedAsArgAdd);
     tcase_add_test(tc1_1, subtractionYieldsNonValidRomanNumeral);
     tcase_add_test(tc1_1, sumExceedsMaximumValueErrorMessageTest);
-    tcase_add_test(tc1_1, violtesModernConventionErrorMessageTest);
+    tcase_add_test(tc1_1, violatesModernConventionErrorMessageTest);
     tcase_add_test(tc1_1, maximumFrequencyExceededErrorMessageTest);
 
     srunner_run_all(sr, CK_ENV);
