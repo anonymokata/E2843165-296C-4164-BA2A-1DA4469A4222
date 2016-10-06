@@ -16,7 +16,7 @@ void showTermNullMessage(char term);
 void showNonValidSubtractionResultMessage();
 void showSumExceedsMaximumValueMessage();//total of both terms
 void showExceedsMaximumAllowableFrequencyMessage(char *value);
-void showNonValidNumeralStringMessage(char *value);
+void showViolatesModernConventionMessage(char *value);
 void showLastConvertedValueLessThanCurrentValue();
 
 #endif /* ROMANERROR_H_ */

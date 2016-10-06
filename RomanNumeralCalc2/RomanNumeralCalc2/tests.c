@@ -246,6 +246,27 @@ START_TEST(sumExceedsMaximumValueErrorMessageTest)
 	char *message7 = "Error. Addition results in sum that exceeds maximum allowable value of 3999.";
 	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message7, strlen(message7)) == 0,"Add func failed to show sum exceeds maximum allowable value message");
  
+}
+END_TEST
+
+START_TEST(violtesModernConventionErrorMessageTest)
+{
+#line 160
+	writeToConsoleTextFile();
+	add("MDIVX", "M");
+	char *message8 = "Error. Numeral string 'MDIVX' violates modern convention.";
+	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message8, strlen(message8)) == 0,"Add func failed to show sum exceeds maximum allowable value message");
+
+}
+END_TEST
+
+START_TEST(maximumFrequencyExceededErrorMessageTest)
+{
+#line 166
+	writeToConsoleTextFile();
+	add("MDIVX", "M");
+	char *message8 = "Error. Numeral string 'MDIVX' violates modern convention.";
+	ck_assert_msg(strncmp(getStdoutTextWrittenToFile(), message8, strlen(message8)) == 0,"Add func failed to show sum exceeds maximum allowable value message");
 	
 }
 END_TEST
@@ -275,6 +296,8 @@ int main(void)
     tcase_add_test(tc1_1, nullStringPassedAsArgAdd);
     tcase_add_test(tc1_1, subtractionYieldsNonValidRomanNumeral);
     tcase_add_test(tc1_1, sumExceedsMaximumValueErrorMessageTest);
+    tcase_add_test(tc1_1, violtesModernConventionErrorMessageTest);
+    tcase_add_test(tc1_1, maximumFrequencyExceededErrorMessageTest);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);

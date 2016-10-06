@@ -59,7 +59,7 @@ int checkValue(int lookAheadResult, int currentTotal, char *numeralString)
 	}
 	if (convertedValueExceedsMaximumFrequency(lookAheadResult))
 	{
-		showNonValidNumeralStringMessage(numeralString);
+		showViolatesModernConventionMessage(numeralString);
 		return 0;
 	}
 	int newTotal = currentTotal + lookAheadResult;
