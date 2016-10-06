@@ -91,7 +91,7 @@ END_TEST
 START_TEST(exceedsMaximum)
 {
 #line 74
-	fail_unless(convertRomanNumeralStringToBaseTenInt("MMMCMXCIXI") == 0,"Failed to rejct number larger than 3999");
+	fail_unless(convertRomanNumeralStringToBaseTenInt("MMMCMXCIXI") == 0,"Failed to reject number larger than 3999");
 	
 //******************************************************************************************************************************
 
@@ -119,7 +119,7 @@ START_TEST(subtractionCheck)
 	ck_assert_msg(strcmp(sub("V", "I"), "IV") == 0,"Failed to subtract V - I");
 	ck_assert_msg(strcmp(sub("DCLIX", "XCIX"), "DLX") == 0,"Failed to subtract DCLIX - XCIX");
 	fail_unless(sub("C", "MM") == NULL,"Sub func failed to recognize negative value");
-	fail_unless(sub(NULL, "MM") == NULL,"Sub func failed to recognize NULL value");
+	fail_unless(sub(NULL, "EXPERIENCE_IS_THE_TEACHER_OF_ALL_THINGS") == NULL,"Sub func failed to recognize NULL value");
 	fail_unless(sub("CCC", "CCC") == NULL,"Sub func failed to recognize zero");
 
 }
@@ -128,7 +128,7 @@ END_TEST
 START_TEST(addAndSubReturnNullForBadSingleTerm)
 {
 #line 96
-	fail_unless(sub("*", "I") == NULL,"Failed to recognize bad A term");
+	fail_unless(sub("MMMIV*", "I") == NULL,"Failed to recognize bad A term");
 	fail_unless(add("I", "VD") == NULL,"Failed to recognize bad B term");
 
 }

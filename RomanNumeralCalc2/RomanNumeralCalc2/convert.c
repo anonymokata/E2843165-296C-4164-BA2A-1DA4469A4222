@@ -11,11 +11,13 @@
 #include "convert.h"
 #include "romanError.h"
 
+//***************************************************************************************
 int termOccurrences[13];
 int lastTermConversion;
 const int convertedTermValues[13] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
 const int maximumAllowableTermFrequency[13] = {3, 1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 3};
 const char *terms[14]={"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+//***************************************************************************************
 
 int convertRomanNumeralStringToBaseTenInt(char *numeralString)
 {
