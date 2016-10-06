@@ -98,6 +98,8 @@ char *getStdoutTextWrittenToFile()
 
 #test repeatingTermsTest
 	fail_unless(add("MXIVIV", "I") == NULL,"Failed to recognize bad input");
+	fail_unless(add("XXIII", "CMCM") == NULL, "Failed to recognize bad input");
+	fail_unless(add("MMMM", "I_CAME_I_SAW_I_CONQUERED") == NULL, "Failed to recognize bad input");
 
 #test convertedValuesOutOfOrder
 	fail_unless(add("DCIVX", "XVI") == NULL, "Failed to recognize bad input");

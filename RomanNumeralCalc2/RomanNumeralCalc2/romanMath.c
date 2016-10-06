@@ -9,6 +9,8 @@
 #include "romanMath.h"
 #include "romanError.h"
 
+//takes as input two char arrays (a and b)
+//outputs
 char *add(char *a, char *b)
 {
 	int termA, termB;
@@ -53,3 +55,4 @@ int goodInput(char *numeralStringA, char *numeralStringB, int *termA, int *termB
 		return 0;
 	return 1;
 }
+

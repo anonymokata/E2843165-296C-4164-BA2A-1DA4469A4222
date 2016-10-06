@@ -1,8 +1,7 @@
 /*
- * romanError.c
- *
+ *  romanError.c
  *  Created on: Oct 1, 2016
- *      Author: brad
+ *  Author: Brad Rust
  */
 #include <stdio.h>
 #include <errno.h>
@@ -52,4 +51,3 @@ void showViolatesModernConventionMessage(char *value)
 {
 	fprintf(stderr, "Error. Numeral string '%s' violates modern convention.\n", value);
 }
-

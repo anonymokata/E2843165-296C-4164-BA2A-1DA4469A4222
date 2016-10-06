@@ -138,13 +138,15 @@ START_TEST(repeatingTermsTest)
 {
 #line 100
 	fail_unless(add("MXIVIV", "I") == NULL,"Failed to recognize bad input");
+	fail_unless(add("XXIII", "CMCM") == NULL, "Failed to recognize bad input");
+	fail_unless(add("MMMM", "I_CAME_I_SAW_I_CONQUERED") == NULL, "Failed to recognize bad input");
 
 }
 END_TEST
 
 START_TEST(convertedValuesOutOfOrder)
 {
-#line 103
+#line 105
 	fail_unless(add("DCIVX", "XVI") == NULL, "Failed to recognize bad input");
 	
 //******************************************************************************************************************************
@@ -155,7 +157,7 @@ END_TEST
 
 START_TEST(characterExceedsMaximumFrequency)
 {
-#line 109
+#line 111
  	fail_unless(convertRomanNumeralStringToBaseTenInt("CCCCC") == 0, "Failed to detect maximum character frequency in numeral string");
 
 }
@@ -163,7 +165,7 @@ END_TEST
 
 START_TEST(badRomanNumeralCharacter)
 {
-#line 112
+#line 114
 	writeToConsoleTextFile();
 	ck_assert_int_eq(convertSingleCharacterToInt('J'), -1);
 	char *message = "Invalid Roman Numeral char 'J'";
@@ -174,7 +176,7 @@ END_TEST
 
 START_TEST(badgetNextConvertableValuePairs)
 {
-#line 118
+#line 120
 	writeToConsoleTextFile();
 	fail_unless(getNextConvertableValue('I', 'C', 0) == -2, "Conversion of non Roman Numeral to int test failed (getNextConvertableValue)");
 	char *message1 = "Error. Invalid Roman numeral pair 'IC'";
@@ -185,7 +187,7 @@ END_TEST
 
 START_TEST(badConversionToBaseTen)
 {
-#line 124
+#line 126
 	writeToConsoleTextFile();
 	ck_assert_msg(convertRomanNumeralStringToBaseTenInt("MIM") == 0, "convertRomanNumeralStringToBaseTen fails to catch bad input MC%");
 	char *message2 = "Error. Invalid Roman numeral pair 'IM' in the string 'MIM'.";
@@ -196,7 +198,7 @@ END_TEST
 
 START_TEST(termExceeds3999MessageTest)
 {
-#line 130
+#line 132
 	writeToConsoleTextFile();
 	convertRomanNumeralStringToBaseTenInt("MMMCMXCIXI");
 	char *message3 = "Numeral string 'MMMCMXCIXI' exceeds maximum allowable value of 3999.";
@@ -207,7 +209,7 @@ END_TEST
 
 START_TEST(nullStringPassedAsArgSub)
 {
-#line 136
+#line 138
 	writeToConsoleTextFile();
 	sub(NULL, "MM");
 	char *message4 = "Error. Term A null.";
@@ -218,7 +220,7 @@ END_TEST
 
 START_TEST(nullStringPassedAsArgAdd)
 {
-#line 142
+#line 144
 	writeToConsoleTextFile();
 	add("CC", NULL);
 	char *message5 = "Error. Term B null.";
@@ -229,7 +231,7 @@ END_TEST
 
 START_TEST(subtractionYieldsNonValidRomanNumeral)
 {
-#line 148
+#line 150
 	writeToConsoleTextFile();
 	sub("CC", "MD");
 	char *message6 = "Error. Subtraction results are not a valid Roman numeral (negative or zero).";
@@ -240,7 +242,7 @@ END_TEST
 
 START_TEST(sumExceedsMaximumValueErrorMessageTest)
 {
-#line 154
+#line 156
 	writeToConsoleTextFile();
 	add("MMM", "M");
 	char *message7 = "Error. Addition results in sum that exceeds maximum allowable value of 3999.";
@@ -251,7 +253,7 @@ END_TEST
 
 START_TEST(violatesModernConventionErrorMessageTest)
 {
-#line 160
+#line 162
 	writeToConsoleTextFile();
 	add("MDIVX", "M");
 	char *message8 = "Error. Numeral string 'MDIVX' violates modern convention.";
@@ -262,7 +264,7 @@ END_TEST
 
 START_TEST(maximumFrequencyExceededErrorMessageTest)
 {
-#line 166
+#line 168
 	writeToConsoleTextFile();
 	add("MDIVX", "M");
 	char *message8 = "Error. Numeral string 'MDIVX' violates modern convention.";
