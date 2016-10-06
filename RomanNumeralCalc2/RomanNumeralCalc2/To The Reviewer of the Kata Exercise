@@ -12,8 +12,8 @@ that wasn't at the beginning)
 and little did I know that all you had to do was to create the subfolders that eclipse was complaining about. Lesson learned.  
   
 I changed the url that my commits wrote to, but I never checked the github repository until about 5 commits in and was terrified  
-to learn that nothing was there! After seeing that it was all in RomanNumeralCalLib I thought...you know what? I don't care if I  
-publish my mistakes. This is totally fine. So here we are.  
+to learn that nothing was there! After seeing that it was all in RomanNumeralCalLib I thought, you know...maybe it's best to be  
+transparent and just be forthcoming that I made a mistake. So here we are.  
   
 This exercise has been terrific. At first I thought that developing a solution using TDD was going to be super restrictive and   
 was going to shape precisely how my program should be written. I actually think that's why my first solution was so poor. I  
@@ -23,15 +23,16 @@ to make massive changes in my code and breaking all of my tests, or starting fro
 I have a (good?) habit of drawing lots of little ideas out on paper but I never actually wrote down what I wanted to do from  
 front to back on my first attempt. On my second, I was sure that by laying out a plan and then using TDD to develop it, I would  
 do a much better job. And to my surprise, not only did that happen, but developing in this way became very natural and made me  
-focus on solving the explicit task at hand (and as someone who often wanders through several different classes when programming,  
-this way is much better, for the most part). I even had a moment when writing the convert.c file when I thought "I would not   
-have came to this conclusion so soon had I not written a test case for it first". Plus, I always know that I can write simple   
-code for test cases and then refactor once I have working code. Combine that with the ability to walk back in time with version   
-control and you quickly become completely fearless to make drastic refactoring changes. I like coding this way so much that I am   
-starting to implement it at work in my C# applications, which is something I never considered before now.   
+focus on solving the explicit task at hand. It was nice to know that I could write simple code for test cases and then refactor  
+once I have working code. Combine that with the ability to walk back in time with version control and you quickly become  
+completely fearless to make drastic refactoring changes. I like coding this way so much that I am starting to implement it at  
+work in my C# applications, which is something I never considered before now.   
 
-Thanks for reading if you made it this far. I started school about six years ago with the hopes of just making a better life for my family, but I have dreamed of being part of something bigger than myself since I realized that not only could I be an engineer, but that I was a pretty good one. I consider myself fortunate to have participated in this Kata exercise and I look forward to your comments and questions. 
+If you have any questions about my code, methods, or repository, please give me a call or write an email. I look forward to  
+speaking with you soon. 
   
 Happy Coding,  
-  
-Brad 
+   
+Brad Rust   
+859-351-4677  
+brad.rustEE@gmail.com  
