@@ -26,11 +26,9 @@ Functions Intended for Public Use:
 * sub(char *term1, char *term2)  
 	* sub takes two Roman numeral variables, in char* format, subtracts them, and returns the difference as a char*  
 	* sub subtracts term2 from term1 | sub("XX", "V") returns "XV" | (20 - 5) = 15  
-	* add returns NULL for any non-valid input  
+	* sub returns NULL for any non-valid input  
 	* sub will print to stderr the offending character or character pair, and string that the character/pair is contained in  
 	* sub will print an error to stderr if the difference is zero or negative  
-    
-Other functions in the library have been fully commented should the user care to incorporate them.  
   
 Go forth and calculate. May your empire remain lead-free!  
    
